@@ -7,10 +7,9 @@ import '../fonts/webfontkit/stylesheet.css'
 import { GlobalStyle, gray } from '../utilities'
 
 const LayoutBody = styled.main`
-  margin: 0 auto;
-  max-width: 960;
+  margin: .5rem auto;
+  max-width: 960px;
   padding: 0 2rem 1rem;
-  background: ${gray};
   color: white;
 `
 

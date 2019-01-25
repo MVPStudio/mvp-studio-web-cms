@@ -3,7 +3,10 @@ module.exports = {
     title: `MVP Studio`,
     description: `We are a collaborative and fun group of web professionals who strive to provide cost–effective design solutions that support your organization's mission and suits your exact needs.`,
     author: `Greg McKelvey`,
+    siteUrl: 'https://mvpstudio.github.io/mvp-studio-web-cms/',
   },
+  pathPrefix: '/mvp-studio-web-cms',
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -13,6 +16,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown`,
+        path: `${__dirname}/src/markdown`,
+      },
+    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,

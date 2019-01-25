@@ -3,10 +3,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { red, elevation } from '../utilities'
 import MVPLogo from '../images/mvp-logo-white.svg'
+import Navbar from './navbar';
 
 const StyledHeader = styled.header`
   background: ${red};
-  padding-bottom: 1.45rem;
   ${elevation[2]}
 `
 const StyledLogo = styled(MVPLogo)`
@@ -19,6 +19,7 @@ const Header = ({ siteTitle }) => (
     <Link to="/">
       <StyledLogo />
     </Link>
+    <Navbar />
   </StyledHeader>
 )
 

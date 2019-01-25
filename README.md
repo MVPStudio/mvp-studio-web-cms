@@ -1,2 +1,4 @@
 # mvp-studio-web-cms
-the repo for the static site.
+
+The repo for the static site.
+[Live Site of GH Pages](https://mvpstudio.github.io/mvp-studio-web-cms/)

@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
+import { gray, red } from './colors';
+
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -14,12 +16,18 @@ html {
 }
 body {
   margin: 0;
+  background: ${gray};
+
 }
 
  h1, h2 {
    font-family: 'lulo_cleanone_bold', sans-serif;
    margin-top: 0;
    padding: .5rem;
+ }
+
+ a {
+   color: ${red};
  }
 
 `
