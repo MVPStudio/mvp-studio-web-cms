@@ -20,12 +20,13 @@ const NavList = styled.ul`
 const NavLi = styled.li`
   display: inline-block;
   margin-right: 1rem;
-  padding: 0.3rem;
   transition: 0.5s ease;
 
-  &:hover,
-  &:active {
-    background: ${gray};
+  a {
+    &:hover,
+    &:active {
+      background: ${gray};
+    }
   }
 `
 
@@ -34,7 +35,7 @@ const ListLink = props => (
     <Link
       to={props.to}
       activeStyle={{ background: gray, color: 'white' }}
-      style={{ color: 'white', textDecoration: 'none' }}
+      style={{ color: 'white', textDecoration: 'none', padding: '0.3rem' }}
     >
       {props.children}
     </Link>
@@ -42,12 +43,12 @@ const ListLink = props => (
 )
 
 const Navbar = () => (
-    <NavList>
-      <ListLink to="/">Home</ListLink>
-      <ListLink to="/who-we-are">Who We Are</ListLink>
-      <ListLink to="/how-it-works">How It Works</ListLink>
-      <ListLink to="/showcase">Showcase</ListLink>
-    </NavList>
+  <NavList>
+    <ListLink to="/">Home</ListLink>
+    <ListLink to="/who-we-are">Who We Are</ListLink>
+    <ListLink to="/how-it-works">How It Works</ListLink>
+    <ListLink to="/showcase">Showcase</ListLink>
+  </NavList>
 )
 
 export default Navbar
