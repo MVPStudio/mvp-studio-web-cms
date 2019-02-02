@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Header from './header'
 //import './layout.css'
 import '../fonts/webfontkit/stylesheet.css'
-import { GlobalStyle, gray } from '../utilities'
+import { GlobalStyle } from '../utilities'
 
 const LayoutBody = styled.main`
   margin: .5rem auto;
