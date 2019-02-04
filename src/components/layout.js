@@ -5,18 +5,29 @@ import Header from './header'
 //import './layout.css'
 import '../fonts/webfontkit/stylesheet.css'
 import { GlobalStyle } from '../utilities'
+import { Spring } from 'react-spring'
 
 const LayoutBody = styled.main`
-  margin: .5rem auto;
+  margin: 0.5rem auto;
   max-width: 960px;
   padding: 0 2rem 1rem;
   color: white;
 `
 
-const Layout = ({ children }) => (
+const Layout = ({ children, pathname }) => (
   <>
     <GlobalStyle />
-    <Header />
+    {pathname ? (
+      <Spring config="slow" from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {style => (
+          <div style={style}>
+            <Header pathname={pathname} />
+          </div>
+        )}
+      </Spring>
+    ) : (
+      <Header />
+    )}
     <LayoutBody>
       {children}
       <footer>
