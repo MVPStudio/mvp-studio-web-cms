@@ -9,7 +9,6 @@ export default class ProjectForm extends Component {
   //   formSubmitted: false,
   // }
   render() {
-    console.log(this.props)
     return (
       <div>
         <Formik
