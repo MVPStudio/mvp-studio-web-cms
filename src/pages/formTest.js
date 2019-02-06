@@ -11,15 +11,12 @@ const FormTest = () => (
     <SEO title="Form Tests" />
     <h1 style={{ textAlign: 'center' }}>Forms Test Page</h1>
     <FormAnimation>
-      {props => {
-        console.log(props)
-        return (
-          <ProjectForm
-            setFormState={props.setFormState}
-            setSubmitResponse={props.setSubmitResponse}
-          />
-        )
-      }}
+      {props => (
+        <ProjectForm
+          setFormState={props.setFormState}
+          setSubmitResponse={props.setSubmitResponse}
+        />
+      )}
     </FormAnimation>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
