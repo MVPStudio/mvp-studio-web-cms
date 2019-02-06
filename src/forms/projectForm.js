@@ -1,64 +1,20 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field } from 'formik'
 //import * as yup from 'yup'
-import styled from 'styled-components'
-import { elevation } from '../utilities'
-
-const StyledForm = styled(Form)`
-  display: grid;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-
-  label {
-    max-width: 100%;
-    margin: 0.5rem;
-    text-align: left;
-  }
-  label,
-  input,
-  textarea,
-  button {
-    font-size: 1.25rem;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    font-family: inherit;
-    padding: 0.5rem;
-    ${elevation[2]};
-    margin-top: 0.25rem;
-  }
-  button {
-    margin: 0 auto;
-    width: 250px;
-    background: #2b2b2b;
-    border: none;
-    height: 3rem;
-    border-radius: 5px;
-    box-shadow: 0px 1px 5px #333;
-    color: white;
-    cursor: pointer;
-    font-family: inherit;
-    transition: 0.2s;
-    :hover {
-      box-shadow: 0px 5px 10px #000;
-      transform: translate(0, -2px);
-    }
-    :disabled {
-      background-color: #aaa;
-    }
-  }
-`
+import StyledForm from './styledForm'
 
 export default class ProjectForm extends Component {
+  // state = {
+  //   submitResponse: '',
+  //   formSubmitted: false,
+  // }
   render() {
+    console.log(this.props)
     return (
       <div>
         <Formik
           initialValues={{
-            // formName: 'Project_Onboarding_Form', // Must be same as airtable base name
+            formName: 'Project_Onboarding_Form', // Must be same as airtable base name
             Name_of_project: '',
             Email: '',
             Short_description: '',
@@ -75,12 +31,28 @@ export default class ProjectForm extends Component {
             console.log('Form submitted')
             console.log(values)
             console.log(actions)
-            // TODO implement lambda connection
+            this.props.setFormState(true)
+            this.props.setSubmitResponse('Thanks for submitting!')
+            // // TODO implement lambda connection
+            // const response = await (await fetch(
+            //   '/.netlify/functions/airtable', // path to api proxy
+            //   {
+            //     method: 'PATCH',
+            //     headers: {
+            //       'Content-type': 'application/json',
+            //     },
+            //     body: JSON.stringify(values),
+            //   }
+            // )).json()
+            // console.log(response)
+            // if (response.statusCode === 200) {
+            //   this.props.setSubmitResponse(response.body.message)
+            // } else {
+            //   this.props.setSubmitResponse(response.body.message)
+            //   //this.setState({ submitResponse: response.body.message })
+            // }
             actions.setSubmitting(false)
-            actions.resetForm({})
-            
           }}
-        
           render={({
             touched,
             errors,
@@ -90,7 +62,7 @@ export default class ProjectForm extends Component {
             resetForm,
             initialValues,
           }) => (
-            <StyledForm onSubmit={handleSubmit} >
+            <StyledForm onSubmit={handleSubmit}>
               <div>
                 <h3>Project Onboarding Form</h3>
                 <p>Please provide the following information:</p>
@@ -135,7 +107,7 @@ export default class ProjectForm extends Component {
               </label>
               <label>
                 Link to demo:
-                <Field type="text" name="Link" /> 
+                <Field type="text" name="Link" />
                 {/* type url requires "http"...  */}
               </label>
               <label>
