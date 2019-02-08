@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import ProjectForm from '../forms/projectForm'
-import FormAnimation from '../forms/formAnimation'
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import ProjectForm from '../forms/projectForm';
+import FormAnimation from '../forms/formAnimation';
 
 const FormTest = () => (
   <Layout>
@@ -20,6 +20,6 @@ const FormTest = () => (
     </FormAnimation>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
+);
 
-export default FormTest
+export default FormTest;

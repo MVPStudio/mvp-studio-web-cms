@@ -1,6 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 import { gray, red } from './colors';
-
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -30,4 +29,4 @@ body {
    color: ${red};
  }
 
-`
+`;

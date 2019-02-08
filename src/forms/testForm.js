@@ -12,7 +12,7 @@ const Example = () => (
           actions.setSubmitting(false);
         }, 1000);
       }}
-      render={(props) => (
+      render={props => (
         <form onSubmit={props.handleSubmit}>
           <Field type="email" name="email" placeholder="Email" />
           <Field component="select" name="color">
@@ -41,8 +41,9 @@ const CustomInputComponent = ({
 }) => (
   <div>
     <input type="text" {...field} {...props} />
-    {touched[field.name] &&
-      errors[field.name] && <div className="error">{errors[field.name]}</div>}
+    {touched[field.name] && errors[field.name] && (
+      <div className="error">{errors[field.name]}</div>
+    )}
   </div>
 );
 

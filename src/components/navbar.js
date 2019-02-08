@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
-import { gray } from '../utilities'
+import React from 'react';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { gray } from '../utilities';
 
 const NavList = styled.ul`
   font-family: 'lulo_cleanone', sans-serif;
@@ -16,7 +17,7 @@ const NavList = styled.ul`
   @media (max-width: 800px) {
     flex-direction: column;
   }
-`
+`;
 const NavLi = styled.li`
   display: inline-block;
   margin-right: 1rem;
@@ -28,19 +29,19 @@ const NavLi = styled.li`
       background: ${gray};
     }
   }
-`
+`;
 
-const ListLink = props => (
+const ListLink = ({ to, children }) => (
   <NavLi>
     <Link
-      to={props.to}
+      to={to}
       activeStyle={{ background: gray, color: 'white' }}
       style={{ color: 'white', textDecoration: 'none', padding: '0.3rem' }}
     >
-      {props.children}
+      {children}
     </Link>
   </NavLi>
-)
+);
 
 const Navbar = () => (
   <NavList>
@@ -49,6 +50,11 @@ const Navbar = () => (
     <ListLink to="/how-it-works">How It Works</ListLink>
     <ListLink to="/showcase">Showcase</ListLink>
   </NavList>
-)
+);
 
-export default Navbar
+ListLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export default Navbar;

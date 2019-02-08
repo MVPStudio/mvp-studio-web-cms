@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Header from './header'
-//import './layout.css'
-import '../fonts/webfontkit/stylesheet.css'
-import { GlobalStyle } from '../utilities'
-import { Spring } from 'react-spring'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Spring } from 'react-spring';
+// import './layout.css'
+import '../fonts/webfontkit/stylesheet.css';
+import { GlobalStyle } from '../utilities';
+import Header from './header';
 
 const LayoutBody = styled.main`
   margin: 0.5rem auto;
   max-width: 960px;
   padding: 0 2rem 1rem;
   color: white;
-`
+`;
 
 const Layout = ({ children, pathname }) => (
   <>
@@ -37,10 +37,11 @@ const Layout = ({ children, pathname }) => (
       </footer>
     </LayoutBody>
   </>
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+  pathname: PropTypes.string,
+};
 
-export default Layout
+export default Layout;

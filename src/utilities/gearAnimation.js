@@ -1,5 +1,5 @@
-import { css, keyframes } from 'styled-components'
-import { red } from './colors'
+import { css, keyframes } from 'styled-components';
+import { red } from './colors';
 
 const rotate = keyframes`
   from {
@@ -9,7 +9,7 @@ const rotate = keyframes`
   to {
     transform: rotate(360deg);
   }
-`
+`;
 
 export const gearAnimation = css`
   .gear {
@@ -22,4 +22,4 @@ export const gearAnimation = css`
     animation-play-state: running;
     fill: ${red};
   }
-`
+`;

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { elevation } from '../utilities'
-import { Form } from 'formik'
+import styled from 'styled-components';
+import { Form } from 'formik';
+import { elevation } from '../utilities';
 
 const StyledForm = styled(Form)`
   display: grid;
@@ -51,6 +51,6 @@ const StyledForm = styled(Form)`
       background-color: #aaa;
     }
   }
-`
+`;
 
-export default StyledForm
+export default StyledForm;

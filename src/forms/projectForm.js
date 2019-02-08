@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { Formik, Form, Field } from 'formik'
-//import * as yup from 'yup'
-import StyledForm from './styledForm'
+import React, { Component } from 'react';
+import { Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
+// import * as yup from 'yup'
+import StyledForm from './styledForm';
 
 export default class ProjectForm extends Component {
   // state = {
@@ -27,11 +28,12 @@ export default class ProjectForm extends Component {
           }}
           validationSchema // currently validated with HTML
           onSubmit={async (values, actions) => {
-            console.log('Form submitted')
-            console.log(values)
-            console.log(actions)
-            this.props.setFormState(true)
-            this.props.setSubmitResponse('Thanks for submitting!')
+            console.log('Form submitted');
+            console.log(values);
+            console.log(actions);
+            const { setFormState, setSubmitResponse } = this.props;
+            setFormState(true);
+            setSubmitResponse('Thanks for submitting!');
             // // TODO implement lambda connection
             // const response = await (await fetch(
             //   '/.netlify/functions/airtable', // path to api proxy
@@ -50,7 +52,8 @@ export default class ProjectForm extends Component {
             //   this.props.setSubmitResponse(response.body.message)
             //   //this.setState({ submitResponse: response.body.message })
             // }
-            actions.setSubmitting(false)
+            actions.setSubmitting(false);
+            actions.resetForm();
           }}
           render={({
             touched,
@@ -59,7 +62,6 @@ export default class ProjectForm extends Component {
             handleSubmit,
             isValid,
             resetForm,
-            initialValues,
           }) => (
             <StyledForm onSubmit={handleSubmit}>
               <div>
@@ -128,6 +130,11 @@ export default class ProjectForm extends Component {
           )}
         />
       </div>
-    )
+    );
   }
 }
+
+ProjectForm.propTypes = {
+  setFormState: PropTypes.func.isRequired,
+  setSubmitResponse: PropTypes.func.isRequired,
+};

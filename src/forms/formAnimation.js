@@ -1,23 +1,26 @@
-import React, { Component } from 'react'
-import { Transition, animated } from 'react-spring'
+import React, { Component } from 'react';
+import { Transition, animated } from 'react-spring';
 
 class FormAnimation extends Component {
   state = {
     submitResponse: '',
     formSubmitted: false,
-  }
+  };
+
   setFormStateTrue = () => {
-    this.setState({ formSubmitted: true })
-  }
+    this.setState({ formSubmitted: true });
+  };
+
   setSubmitResponse = submitResponse => {
-    this.setState({ submitResponse: submitResponse })
-  }
+    this.setState({ submitResponse });
+  };
 
   render() {
-    const state = this.state
+    const { formSubmitted, submitResponse } = this.state;
+    const { children } = this.props;
     return (
       <Transition
-        items={this.state.formSubmitted}
+        items={formSubmitted}
         native
         from={{ opacity: 0, height: 0 }}
         enter={{ opacity: 1, height: 'auto' }}
@@ -27,7 +30,7 @@ class FormAnimation extends Component {
           !submitted
             ? props => (
                 <animated.div style={props}>
-                  {this.props.children({
+                  {children({
                     setFormState: this.setFormStateTrue,
                     setSubmitResponse: this.setSubmitResponse,
                   })}
@@ -35,13 +38,13 @@ class FormAnimation extends Component {
               )
             : props => (
                 <animated.h2 style={{ textAlign: 'center', ...props }}>
-                  {this.state.submitResponse}
+                  {submitResponse}
                 </animated.h2>
               )
         }
       </Transition>
-    )
+    );
   }
 }
 
-export default FormAnimation
+export default FormAnimation;

@@ -1,8 +1,8 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const HowItWorks = () => (
   <Layout>
@@ -22,6 +22,6 @@ const HowItWorks = () => (
       )}
     />
   </Layout>
-)
+);
 
-export default HowItWorks
+export default HowItWorks;

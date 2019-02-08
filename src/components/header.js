@@ -1,9 +1,10 @@
-import { Link } from 'gatsby'
-import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
-import { red, elevation } from '../utilities'
-import MVPLogo from '../images/mvp-logo-white.svg'
-import Navbar from './navbar'
+import { Link } from 'gatsby';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { red, elevation } from '../utilities';
+import MVPLogo from '../images/mvp-logo-white.svg';
+import Navbar from './navbar';
 
 const StyledHeader = styled.header`
   display: grid;
@@ -25,15 +26,16 @@ const StyledHeader = styled.header`
         height: auto;
       }
     `}
-`
+`;
 const StyledLogo = styled(MVPLogo)`
   max-height: 40vh;
   margin: 1rem;
-`
+`;
 
 class Header extends Component {
   render() {
-    const homeHeader = this.props.pathname && 'homeHeader'
+    const { pathname } = this.props;
+    const homeHeader = pathname && 'homeHeader';
     return (
       <StyledHeader home={homeHeader}>
         <Link to="/">
@@ -41,8 +43,16 @@ class Header extends Component {
         </Link>
         <Navbar />
       </StyledHeader>
-    )
+    );
   }
 }
 
-export default Header
+Header.propTypes = {
+  pathname: PropTypes.string,
+};
+
+Header.defaultProps = {
+  pathname: ``,
+};
+
+export default Header;
