@@ -31,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /images/, //uses regex to determine path of svgs
+          include: /images/, // uses regex to determine path of svgs
         },
       },
     },
@@ -46,7 +46,7 @@ module.exports = {
             'lulo_cleanone',
             'lulo_cleanone_bold',
           ],
-          //urls: [`${__dirname}/src/fonts/webfontkit/stylesheet.css`],
+          // urls: [`${__dirname}/src/fonts/webfontkit/stylesheet.css`],
         },
       },
     },
@@ -66,4 +66,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
-}
+};
