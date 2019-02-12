@@ -133,9 +133,13 @@ export default class InternForm extends Component {
               Website:
               <Field type="text" name="Website" />
             </label>
-            <label>
+            <label className="checkbox-label">
               Looking for a Capstone:
-              <Field type="checkbox" name="Looking_For_Capstone" />
+              <Field
+                className="checkbox"
+                type="checkbox"
+                name="Looking_For_Capstone"
+              />
             </label>
             <button type="submit" disabled={isSubmitting || !isValid}>
               Submit

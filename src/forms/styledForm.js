@@ -32,6 +32,14 @@ const StyledForm = styled(Form)`
     /* Styles react-select */
     color: ${gray};
   }
+  .checkbox-label {
+    display: grid;
+    justify-content: flex-start;
+  }
+  .checkbox {
+    box-shadow: none;
+    transform: scale(1.5);
+  }
   .invalid {
     background: #f66;
   }
