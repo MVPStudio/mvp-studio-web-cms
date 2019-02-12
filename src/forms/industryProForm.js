@@ -8,7 +8,6 @@ import StyledForm from './styledForm';
 
 export default class IndustryProForm extends Component {
   render() {
-    // const currentProjects = data.edges.node.data;
     return (
       <StaticQuery
         query={graphql`
@@ -31,9 +30,8 @@ export default class IndustryProForm extends Component {
               Name: '',
               Email: '',
               Github: '',
-              Skill_Category_Dev: '',
-              Skill_Category_Other: '',
-              Interested_In_Projects: '',
+              Skill_Category: [],
+              Interested_In_Projects: [],
             }}
             validationSchema // currently validated with HTML
             onSubmit={async (values, actions) => {
@@ -70,6 +68,7 @@ export default class IndustryProForm extends Component {
               isSubmitting,
               handleSubmit,
               isValid,
+              setFieldValue,
             }) => (
               <StyledForm onSubmit={handleSubmit}>
                 <div>
@@ -114,6 +113,9 @@ export default class IndustryProForm extends Component {
                       { value: 'Design', label: 'Design' },
                       { value: 'Agile PM', label: 'Agile PM' },
                     ]}
+                    onChange={value =>
+                      setFieldValue('Skill_Category', value.map(v => v.value))
+                    }
                   />
                 </label>
 
@@ -129,6 +131,12 @@ export default class IndustryProForm extends Component {
                       value: node.data.Name,
                       label: node.data.Name,
                     }))}
+                    onChange={value =>
+                      setFieldValue(
+                        'Interested_In_Projects',
+                        value.map(v => v.value),
+                      )
+                    }
                   />
                 </label>
                 <button type="submit" disabled={isSubmitting || !isValid}>
