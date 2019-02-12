@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
-import { elevation } from '../utilities';
+import { elevation, gray, red } from '../utilities';
 
 const StyledForm = styled(Form)`
   display: grid;
@@ -28,8 +28,15 @@ const StyledForm = styled(Form)`
     ${elevation[2]};
     margin-top: 0.25rem;
   }
+  .select {
+    /* Styles react-select */
+    color: ${gray};
+  }
   .invalid {
     background: #f66;
+  }
+  input:focus {
+    outline-color: ${red};
   }
   button {
     margin: 0 auto;
