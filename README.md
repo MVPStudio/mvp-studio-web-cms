@@ -1,7 +1,11 @@
 # mvp-studio-web-cms
 
 The repo for the static site.
-[Live Site of GH Pages](https://mvpstudio.github.io/mvp-studio-web-cms/)
+[Live Site with GH Pages](https://mvpstudio.github.io/mvp-studio-web-cms/)
+
+## CMS
+Each page has a markdown file associated with it for content editing.
+[Go to Markdown Folder](https://github.com/MVPStudio/mvp-studio-web-cms/tree/master/src/markdown)
 
 ## Build Instructions
 
