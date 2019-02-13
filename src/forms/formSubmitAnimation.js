@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Transition, animated } from 'react-spring';
+import PropTypes from 'prop-types';
 
 class FormSubmitAnimation extends Component {
   state = {
@@ -46,5 +47,9 @@ class FormSubmitAnimation extends Component {
     );
   }
 }
+
+FormSubmitAnimation.propTypes = {
+  children: PropTypes.element,
+};
 
 export default FormSubmitAnimation;
