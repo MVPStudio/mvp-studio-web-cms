@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Transition, animated } from 'react-spring';
 
-class FormAnimation extends Component {
+class FormSubmitAnimation extends Component {
   state = {
     submitResponse: '',
     formSubmitted: false,
@@ -47,4 +47,4 @@ class FormAnimation extends Component {
   }
 }
 
-export default FormAnimation;
+export default FormSubmitAnimation;
