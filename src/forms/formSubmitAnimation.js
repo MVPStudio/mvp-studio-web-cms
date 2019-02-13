@@ -49,7 +49,7 @@ class FormSubmitAnimation extends Component {
 }
 
 FormSubmitAnimation.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.func,
 };
 
 export default FormSubmitAnimation;
