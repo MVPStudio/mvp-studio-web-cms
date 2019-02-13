@@ -6,7 +6,8 @@ import SEO from '../components/seo';
 // import ProjectForm from '../forms/projectForm';
 import FormAnimation from '../forms/formAnimation';
 // import IndustryProForm from '../forms/industryProForm';
-import InternForm from '../forms/internForm';
+// import InternForm from '../forms/internForm';
+import SponsorForm from '../forms/sponsorForm';
 
 const FormTest = () => (
   <Layout>
@@ -14,7 +15,7 @@ const FormTest = () => (
     <h1 style={{ textAlign: 'center' }}>Forms Test Page</h1>
     <FormAnimation>
       {({ setFormState, setSubmitResponse }) => (
-        <InternForm
+        <SponsorForm
           setFormState={setFormState}
           setSubmitResponse={setSubmitResponse}
         />
