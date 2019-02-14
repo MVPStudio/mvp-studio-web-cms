@@ -86,6 +86,12 @@ module.exports = {
         icon: `src/images/single-gear.svg`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-express', // Makes all of the routes for the express server
+      options: {
+        output: 'config/gatsby-express.json',
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
