@@ -5,10 +5,6 @@ import PropTypes from 'prop-types';
 import StyledForm from './styledForm';
 
 export default class ProjectForm extends Component {
-  // state = {
-  //   submitResponse: '',
-  //   formSubmitted: false,
-  // }
   render() {
     return (
       <div>
@@ -28,32 +24,23 @@ export default class ProjectForm extends Component {
           }}
           validationSchema // currently validated with HTML
           onSubmit={async (values, actions) => {
-            console.log('Form submitted');
-            console.log(values);
-            console.log(actions);
             const { setFormState, setSubmitResponse } = this.props;
+            const response = await (await fetch(
+              '/api/airtable', // path to api proxy
+              {
+                method: 'PATCH',
+                headers: {
+                  'Content-type': 'application/json',
+                },
+                body: JSON.stringify(values),
+              },
+            )).json();
+            if (response.statusCode === 200) {
+              actions.resetForm();
+            }
             setFormState(true);
-            setSubmitResponse('Thanks for submitting!');
-            // // TODO implement lambda connection
-            // const response = await (await fetch(
-            //   '/.netlify/functions/airtable', // path to api proxy
-            //   {
-            //     method: 'PATCH',
-            //     headers: {
-            //       'Content-type': 'application/json',
-            //     },
-            //     body: JSON.stringify(values),
-            //   }
-            // )).json()
-            // console.log(response)
-            // if (response.statusCode === 200) {
-            //   this.props.setSubmitResponse(response.body.message)
-            // } else {
-            //   this.props.setSubmitResponse(response.body.message)
-            //   //this.setState({ submitResponse: response.body.message })
-            // }
+            setSubmitResponse(response.message);
             actions.setSubmitting(false);
-            actions.resetForm();
           }}
           render={({
             touched,
@@ -61,7 +48,6 @@ export default class ProjectForm extends Component {
             isSubmitting,
             handleSubmit,
             isValid,
-            resetForm,
           }) => (
             <StyledForm onSubmit={handleSubmit}>
               <div>
