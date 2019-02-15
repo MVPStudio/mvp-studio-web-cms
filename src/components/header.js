@@ -13,6 +13,7 @@ const StyledHeader = styled.header`
   justify-content: space-around;
   background: ${red};
   ${elevation[2]};
+  box-shadow: inset 0px 0px 136px 0px rgba(0, 0, 0, 0.75);
 
   ${({ home }) =>
     home &&
@@ -29,7 +30,7 @@ const StyledHeader = styled.header`
     `}
 `;
 const StyledLogo = styled(MVPLogo)`
-  max-height: 40vh;
+  max-height: 30vh;
   margin: 1rem;
 `;
 
