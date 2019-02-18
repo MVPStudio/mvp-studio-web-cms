@@ -27,7 +27,6 @@ export default params => {
       }
     }
   `).allAirtable.edges.filter(({ node }) => node.data.Approved);
-  console.log(showcaseProjects);
   if (params === 'all') {
     return showcaseProjects;
   }

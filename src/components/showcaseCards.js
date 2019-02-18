@@ -22,19 +22,17 @@ const ShowcaseCards = () => {
         data: { Name, Description, URL, ScreenShot, TeamMembers },
       },
     }) => (
-      <>
-        <ShowcaseCard key={Name}>
-          <Img fixed={ScreenShot.localFiles[0].childImageSharp.fixed} />
-          <div>
-            <a href={URL}>
-              <h2>{Name}</h2>
-            </a>
-            <p>Description: {Description}</p>
-            <p>Team Members: {TeamMembers}</p>
-            <p>Link: {URL}</p>
-          </div>
-        </ShowcaseCard>
-      </>
+      <ShowcaseCard key={Name}>
+        <Img fixed={ScreenShot.localFiles[0].childImageSharp.fixed} />
+        <div>
+          <a href={URL}>
+            <h2>{Name}</h2>
+          </a>
+          <p>Description: {Description}</p>
+          <p>Team Members: {TeamMembers}</p>
+          <p>Link: {URL}</p>
+        </div>
+      </ShowcaseCard>
     ),
   );
   return <div>{showcaseCards}</div>;
