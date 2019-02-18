@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Transition, animated } from 'react-spring';
+import { Transition, animated } from 'react-spring/renderprops';
 import PropTypes from 'prop-types';
 
 class FormSubmitAnimation extends Component {

@@ -7,7 +7,8 @@ import SEO from '../../components/seo';
 import FormSubmitAnimation from '../../forms/formSubmitAnimation';
 // import IndustryProForm from '../forms/industryProForm';
 // import SponsorForm from '../forms/sponsorForm';
-import InternForm from '../../forms/internForm';
+// import InternForm from '../../forms/internForm';
+import IndustryProFormContainer from '../../forms/industryProContainer';
 
 const GetInvolvedFormPage = () => (
   <Layout>
@@ -17,7 +18,7 @@ const GetInvolvedFormPage = () => (
     {/* Make choice for intern or pro */}
     <FormSubmitAnimation>
       {({ setFormState, setSubmitResponse }) => (
-        <InternForm
+        <IndustryProFormContainer
           setFormState={setFormState}
           setSubmitResponse={setSubmitResponse}
         />
