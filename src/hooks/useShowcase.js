@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default () => {
+export default params => {
   const showcaseProjects = useStaticQuery(graphql`
     {
       allAirtable(filter: { table: { eq: "Showcase" } }) {
@@ -9,16 +9,30 @@ export default () => {
             data {
               Name
               Approved
+              Description
+              URL
+              TeamMembers
+              ScreenShot {
+                localFiles {
+                  childImageSharp {
+                    fixed(width: 200) {
+                      ...GatsbyImageSharpFixed
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
     }
-  `);
-  return showcaseProjects.allAirtable.edges
-    .filter(({ node }) => node.data.Approved)
-    .map(({ node }) => ({
-      value: node.data.Name,
-      label: node.data.Name,
-    }));
+  `).allAirtable.edges.filter(({ node }) => node.data.Approved);
+  console.log(showcaseProjects);
+  if (params === 'all') {
+    return showcaseProjects;
+  }
+  return showcaseProjects.map(({ node }) => ({
+    value: node.data.Name,
+    label: node.data.Name,
+  }));
 };

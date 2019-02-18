@@ -33,9 +33,9 @@ module.exports = {
           {
             baseId: `appqzdNgU137oV8B3`, // found in api docs, check the 'show api' button, and is the number '...base('YOUR_BASE ID')
             tableName: `Showcase`,
-            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
+            // tableView: `YOUR_TABLE_VIEW_NAME`,  // optional
             // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-            // //mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
+            mapping: { ScreenShot: `fileNode` }, // optional, e.g. "text/markdown", "fileNode"
             // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
           },
           {
