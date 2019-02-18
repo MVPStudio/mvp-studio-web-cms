@@ -41,6 +41,7 @@ module.exports = {
           {
             baseId: `appqzdNgU137oV8B3`,
             tableName: `Team`,
+            mapping: { Avatar: `fileNode` }, // optional, e.g. "text/markdown", "fileNode"
             // tableView: `YOUR_TABLE_VIEW_NAME` // optional
             // can leave off queryName, mapping or tableLinks if not needed
           },
