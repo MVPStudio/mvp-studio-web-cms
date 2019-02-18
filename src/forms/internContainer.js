@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import InternForm from './internForm';
 
-const InterContainer = ({ setFormState, setSubmitResponse }) => {
+const InternContainer = ({ setFormState, setSubmitResponse }) => {
   const initialValues = {
     formName: 'Intern_Form', // Must be same as airtable base name
     Name: '',
@@ -77,8 +77,8 @@ const InterContainer = ({ setFormState, setSubmitResponse }) => {
   );
 };
 
-InterContainer.propTypes = {
+InternContainer.propTypes = {
   setFormState: PropTypes.func.isRequired,
   setSubmitResponse: PropTypes.func.isRequired,
 };
-export default InterContainer;
+export default InternContainer;
