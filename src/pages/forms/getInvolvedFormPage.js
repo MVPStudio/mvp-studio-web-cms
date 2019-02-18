@@ -1,31 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'gatsby';
+import { InternProGears } from '../../components/GearButtons';
 
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
-// import ProjectForm from '../forms/projectForm';
 import FormSubmitAnimation from '../../forms/formSubmitAnimation';
-// import IndustryProForm from '../forms/industryProForm';
-// import SponsorForm from '../forms/sponsorForm';
-// import InternForm from '../../forms/internForm';
-import IndustryProFormContainer from '../../forms/industryProContainer';
+import IndustryProContainer from '../../forms/industryProContainer';
+import InternContainer from '../../forms/internContainer';
 
-const GetInvolvedFormPage = () => (
-  <Layout>
-    <SEO title="Get Involved" />
-    <h1 style={{ textAlign: 'center' }}>Get Involved!</h1>
+class GetInvolvedFormPage extends Component {
+  state = {
+    internOrPro: '',
+  };
 
-    {/* Make choice for intern or pro */}
+  handleInternOrPro = (form, e) => {
+    console.log(form);
+    console.log(e);
+    this.setState({ internOrPro: form });
+  };
+
+  renderInternForm = () => (
     <FormSubmitAnimation>
       {({ setFormState, setSubmitResponse }) => (
-        <IndustryProFormContainer
+        <InternContainer
           setFormState={setFormState}
           setSubmitResponse={setSubmitResponse}
         />
       )}
     </FormSubmitAnimation>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-);
+  );
+
+  renderProForm = () => (
+    <FormSubmitAnimation>
+      {({ setFormState, setSubmitResponse }) => (
+        <IndustryProContainer
+          setFormState={setFormState}
+          setSubmitResponse={setSubmitResponse}
+        />
+      )}
+    </FormSubmitAnimation>
+  );
+
+  render() {
+    const { internOrPro } = this.state;
+    return (
+      <Layout>
+        <SEO title="Get Involved" />
+        <h1 style={{ textAlign: 'center' }}>Get Involved!</h1>
+        <InternProGears handleInternOrPro={e => this.handleInternOrPro(e)} />
+        {internOrPro === 'intern' && this.renderInternForm()}
+        {internOrPro === 'pro' && this.renderProForm()}
+      </Layout>
+    );
+  }
+}
 
 export default GetInvolvedFormPage;
