@@ -7,10 +7,6 @@ const Showcase = () => (
   <Layout>
     <SEO title="How It Works" keywords={[`gatsby`, `application`, `react`]} />
     <h2>Check out these cool projects</h2>
-    <p>
-      This page will have cards generated for each project, perhaps using the
-      gear motif if we are still into that...
-    </p>
     <hr />
     <ShowcaseCards />
   </Layout>

@@ -12,7 +12,7 @@ export default () => {
               Avatar {
                 localFiles {
                   childImageSharp {
-                    fixed(width: 150) {
+                    fixed(width: 150, quality: 100) {
                       ...GatsbyImageSharpFixed
                     }
                   }

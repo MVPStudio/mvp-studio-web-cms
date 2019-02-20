@@ -19,14 +19,16 @@ body {
 
 }
 
- h1, h2 {
-   font-family: 'lulo_cleanone_bold', sans-serif;
-   margin-top: 0;
-   padding: .5rem;
- }
+h1, h2 {
+  font-family: 'lulo_cleanone_bold', sans-serif;
+  margin-top: 0;
+  padding: .5rem;
+  line-height: normal;
+  text-align: center;
+}
 
- a {
-   color: ${red};
- }
+a {
+  color: ${red};
+}
 
 `;

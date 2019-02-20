@@ -10,8 +10,15 @@ const ShowcaseCard = styled.div`
   display: grid;
   grid-template-columns: 200px auto;
   grid-gap: 1rem;
+  align-items: center;
   a {
     text-align: center;
+  }
+  h2 {
+    margin-bottom: 0.1rem;
+  }
+  ul {
+    margin: 0;
   }
 `;
 
@@ -23,14 +30,19 @@ const ShowcaseCards = () => {
       },
     }) => (
       <ShowcaseCard key={Name}>
-        <Img fixed={ScreenShot.localFiles[0].childImageSharp.fixed} />
+        <Img
+          className="screenshot"
+          fixed={ScreenShot.localFiles[0].childImageSharp.fixed}
+        />
         <div>
           <a href={URL}>
             <h2>{Name}</h2>
           </a>
-          <p>Description: {Description}</p>
-          <p>Team Members: {TeamMembers}</p>
-          <p>Link: {URL}</p>
+          <ul>
+            <li>Description: {Description}</li>
+            <li>Team Members: {TeamMembers}</li>
+            <li>Link: {URL}</li>
+          </ul>
         </div>
       </ShowcaseCard>
     ),
