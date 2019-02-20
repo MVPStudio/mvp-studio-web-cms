@@ -1,7 +1,7 @@
 ---
 title: Home
 ---
-## Welcome to MVP Studio: we help visionaries build a vision!
+## Welcome to MVP Studio: we help visionaries build their vision!
 
 **The mission vision and objectives of MVP Studio:** 
  - Help civic groups learn how to own a software project 
