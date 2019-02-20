@@ -33,14 +33,15 @@ module.exports = {
           {
             baseId: `appqzdNgU137oV8B3`, // found in api docs, check the 'show api' button, and is the number '...base('YOUR_BASE ID')
             tableName: `Showcase`,
-            // tableView: `YOUR_TABLE_VIEW_NAME`, // optional
+            // tableView: `YOUR_TABLE_VIEW_NAME`,  // optional
             // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-            // //mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
+            mapping: { ScreenShot: `fileNode` }, // optional, e.g. "text/markdown", "fileNode"
             // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
           },
           {
             baseId: `appqzdNgU137oV8B3`,
             tableName: `Team`,
+            mapping: { Avatar: `fileNode` }, // optional, e.g. "text/markdown", "fileNode"
             // tableView: `YOUR_TABLE_VIEW_NAME` // optional
             // can leave off queryName, mapping or tableLinks if not needed
           },
@@ -84,6 +85,12 @@ module.exports = {
         theme_color: `#e85a36`,
         display: `minimal-ui`,
         icon: `src/images/single-gear.svg`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-express', // Makes all of the routes for the express server
+      options: {
+        output: 'config/gatsby-express.json',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

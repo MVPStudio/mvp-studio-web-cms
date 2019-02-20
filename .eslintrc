@@ -76,6 +76,7 @@
         "extensions": [".js", ".jsx"]
       }
     ],
+    "react-hooks/rules-of-hooks": "error",
     "radix": 0,
     "no-shadow": [
       2,
@@ -110,5 +111,5 @@
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/label-has-for": "off"
   },
-  "plugins": ["prettier"]
+  "plugins": ["prettier", "react-hooks"]
 }

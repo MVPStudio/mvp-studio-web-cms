@@ -21,12 +21,13 @@ const NavList = styled.ul`
 const NavLi = styled.li`
   display: inline-block;
   margin-right: 1rem;
-  transition: 0.5s ease;
 
   a {
+    transition: 0.1s ease;
     &:hover,
     &:active {
       background: ${gray};
+      box-shadow: 0px 0px 39px 0px rgba(0, 0, 0, 0.79);
     }
   }
 `;

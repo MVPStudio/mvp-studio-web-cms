@@ -3,7 +3,7 @@ import React from 'react';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
 import FormSubmitAnimation from '../../forms/formSubmitAnimation';
-import SponsorForm from '../../forms/sponsorForm';
+import SponsorFormContainer from '../../forms/sponsorFormContainer';
 
 const SponsorFormPage = () => (
   <Layout>
@@ -13,7 +13,7 @@ const SponsorFormPage = () => (
     {/* Make choice for intern or pro */}
     <FormSubmitAnimation>
       {({ setFormState, setSubmitResponse }) => (
-        <SponsorForm
+        <SponsorFormContainer
           setFormState={setFormState}
           setSubmitResponse={setSubmitResponse}
         />

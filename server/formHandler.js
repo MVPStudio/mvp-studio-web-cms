@@ -1,13 +1,13 @@
+require('dotenv').config();
 const Airtable = require('airtable');
+
+const { GATSBY_AIRTABLE_API_KEY, AIRTABLE_BASE_ID } = process.env;
 
 const saveContact = async data =>
   new Promise((resolve, reject) => {
-    const { AIRTABLE_API_KEY, AIRTABLE_BASE_ID } = process.env;
-
     Airtable.configure({
-      AIRTABLE_API_KEY,
+      apiKey: GATSBY_AIRTABLE_API_KEY,
     });
-
     const base = Airtable.base(AIRTABLE_BASE_ID);
 
     // formName directs data to correct base
@@ -17,23 +17,18 @@ const saveContact = async data =>
     });
   });
 
-export async function handler(event) {
+module.exports = async function handler(event) {
   try {
-    const data = JSON.parse(event.body);
-    await saveContact(data);
+    await saveContact(event);
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        message: 'Thanks and talk to you soon!',
-      }),
+      message: 'Thanks and talk to you soon!',
     };
   } catch (error) {
     console.log(error);
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        message: 'Hmmmm... Please try again or send us an email. Sorry!',
-      }),
+      message: 'Hmmmm... Please try again or send us an email. Sorry!',
     };
   }
-}
+};

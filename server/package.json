@@ -1,0 +1,21 @@
+{
+  "name": "mvp-node-server",
+  "version": "1.0.0",
+  "description": "Node Express Server for form handling",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "airtable": "^0.5.9",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "gatsby-plugin-express": "^1.1.6",
+    "helmet": "^3.15.1",
+    "nodemon": "^1.18.10"
+  }
+}
