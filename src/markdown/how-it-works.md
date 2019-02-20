@@ -22,5 +22,5 @@ The MVP Studio process is unique and based on agile development. This process is
      - The sprints have ended and there is a working application that showcases your vision  
  
  ***Support(there are two options)***  
-	 - Customer has outside support in place  
-	 - MVP standard support contract  
+     - Visionary has outside support in place  
+     - MVP standard support contract  
