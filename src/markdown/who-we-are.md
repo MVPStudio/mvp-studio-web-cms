@@ -1,9 +1,14 @@
 ---
 title: Who We Are
 ---
+MVP Studio brings together civic groups with technology projects, industry mentors from local technology companies and emerging IT professionals. Our mission, goals and objectives are to:
 
-# We go by many names...
+1.Help civic groups learn how to own a software project
+1.Strengthen the IT workforce
+1.Build an open source library of solutions at a scalable process that others can use
+1.Build a scalable process that others can use
 
-Lorem ipsum dolor amet selvage mustache fixie gochujang keffiyeh synth hexagon flexitarian taiyaki. Squid letterpress glossier kogi messenger bag tumeric, authentic gluten-free slow-carb typewriter pour-over lumbersexual coloring book ugh wolf. Art party prism meggings locavore kitsch, retro brunch. Chambray thundercats actually kinfolk yr readymade pork belly hella. Chia tumeric raclette tacos cloud bread stumptown artisan. Health goth actually live-edge shoreditch, put a bird on it succulents irony church-key polaroid palo santo drinking vinegar austin.
 
-Pop-up enamel pin beard pork belly blog flannel. Seitan lyft authentic hot chicken single-origin coffee fanny pack lo-fi pitchfork dreamcatcher vape mumblecore pop-up 3 wolf moon jean shorts pug. Hammock chicharrones 90's meggings, listicle umami master cleanse mustache next level literally fingerstache poke trust fund. Fixie fam taxidermy scenester poke, listicle craft beer offal. Freegan cold-pressed leggings, YOLO enamel pin hella quinoa.
+
+
+
