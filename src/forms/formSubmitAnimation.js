@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Transition, animated } from 'react-spring';
+import { Transition, animated } from 'react-spring/renderprops';
 import PropTypes from 'prop-types';
 
 class FormSubmitAnimation extends Component {
+  static propTypes = {
+    children: PropTypes.func,
+  };
+
   state = {
     submitResponse: '',
     formSubmitted: false,
@@ -16,9 +20,29 @@ class FormSubmitAnimation extends Component {
     this.setState({ submitResponse });
   };
 
-  render() {
-    const { formSubmitted, submitResponse } = this.state;
+  renderResponse = props => {
+    const { submitResponse } = this.state;
+    return (
+      <animated.h2 style={{ textAlign: 'center', ...props }}>
+        {submitResponse}
+      </animated.h2>
+    );
+  };
+
+  renderForm = props => {
     const { children } = this.props;
+    return (
+      <animated.div style={props}>
+        {children({
+          setFormState: this.setFormStateTrue,
+          setSubmitResponse: this.setSubmitResponse,
+        })}
+      </animated.div>
+    );
+  };
+
+  render() {
+    const { formSubmitted } = this.state;
     return (
       <Transition
         items={formSubmitted}
@@ -27,29 +51,10 @@ class FormSubmitAnimation extends Component {
         enter={{ opacity: 1, height: 'auto' }}
         leave={{ opacity: 0, height: 0 }}
       >
-        {submitted =>
-          !submitted
-            ? props => (
-                <animated.div style={props}>
-                  {children({
-                    setFormState: this.setFormStateTrue,
-                    setSubmitResponse: this.setSubmitResponse,
-                  })}
-                </animated.div>
-              )
-            : props => (
-                <animated.h2 style={{ textAlign: 'center', ...props }}>
-                  {submitResponse}
-                </animated.h2>
-              )
-        }
+        {submitted => (submitted ? this.renderResponse : this.renderForm)}
       </Transition>
     );
   }
 }
-
-FormSubmitAnimation.propTypes = {
-  children: PropTypes.func,
-};
 
 export default FormSubmitAnimation;

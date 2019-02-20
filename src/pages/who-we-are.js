@@ -1,27 +1,27 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import TeamCards from '../components/teamCards';
 
-const WhoWeAre = () => (
-  <Layout>
-    <SEO title="Who We Are" keywords={[`gatsby`, `application`, `react`]} />
-    <StaticQuery
-      query={graphql`
-        {
-          markdownRemark(frontmatter: { title: { eq: "Who We Are" } }) {
-            html
-          }
-        }
-      `}
-      render={data => (
-        <>
-          <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-        </>
-      )}
-    />
-  </Layout>
-);
+const WhoWeAre = () => {
+  const aboutHTML = useStaticQuery(graphql`
+    {
+      markdownRemark(frontmatter: { title: { eq: "Who We Are" } }) {
+        html
+      }
+    }
+  `);
+  return (
+    <Layout>
+      <SEO title="Who We Are" keywords={[`MVP`, 'Developers', 'About']} />
+      <div
+        dangerouslySetInnerHTML={{ __html: aboutHTML.markdownRemark.html }}
+      />
+      <TeamCards />
+    </Layout>
+  );
+};
 
 export default WhoWeAre;

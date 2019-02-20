@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring } from 'react-spring';
+import { Spring } from 'react-spring/renderprops';
 // import './layout.css'
 import '../fonts/webfontkit/stylesheet.css';
 import { GlobalStyle } from '../utilities';

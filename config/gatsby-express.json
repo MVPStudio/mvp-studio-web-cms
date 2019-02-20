@@ -1,0 +1,35 @@
+{
+  "redirects": [],
+  "pages": [
+    {
+      "path": "/404/"
+    },
+    {
+      "path": "/forms/getInvolvedFormPage/"
+    },
+    {
+      "path": "/forms/sponsorFormPage/"
+    },
+    {
+      "path": "/forms/submitProjectFormPage/"
+    },
+    {
+      "path": "/formTest/"
+    },
+    {
+      "path": "/how-it-works/"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "path": "/showcase/"
+    },
+    {
+      "path": "/who-we-are/"
+    },
+    {
+      "path": "/404.html"
+    }
+  ]
+}

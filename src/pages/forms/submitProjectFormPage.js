@@ -3,7 +3,7 @@ import React from 'react';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
 import FormSubmitAnimation from '../../forms/formSubmitAnimation';
-import ProjectForm from '../../forms/projectForm';
+import ProjectContainer from '../../forms/projectContainer';
 
 const SubmitProjectFormPage = () => (
   <Layout>
@@ -13,7 +13,7 @@ const SubmitProjectFormPage = () => (
     {/* Make choice for intern or pro */}
     <FormSubmitAnimation>
       {({ setFormState, setSubmitResponse }) => (
-        <ProjectForm
+        <ProjectContainer
           setFormState={setFormState}
           setSubmitResponse={setSubmitResponse}
         />

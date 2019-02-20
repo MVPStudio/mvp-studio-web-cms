@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { red, elevation } from '../utilities';
 import MVPLogo from '../images/mvp-logo-white.svg';
 import Navbar from './navbar';
-import GearButtons from './GearButtons';
+import { HomeGears } from './GearButtons';
 
 const StyledHeader = styled.header`
   display: grid;
@@ -13,6 +13,7 @@ const StyledHeader = styled.header`
   justify-content: space-around;
   background: ${red};
   ${elevation[2]};
+  box-shadow: inset 0px 0px 136px 0px rgba(0, 0, 0, 0.75);
 
   ${({ home }) =>
     home &&
@@ -29,7 +30,7 @@ const StyledHeader = styled.header`
     `}
 `;
 const StyledLogo = styled(MVPLogo)`
-  max-height: 40vh;
+  max-height: 30vh;
   margin: 1rem;
 `;
 
@@ -42,7 +43,7 @@ class Header extends Component {
         <Link to="/">
           <StyledLogo />
         </Link>
-        {homeHeader && <GearButtons />}
+        {homeHeader && <HomeGears />}
         <Navbar />
       </StyledHeader>
     );
