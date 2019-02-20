@@ -3,8 +3,9 @@ title: How It Works
 ---
 # How does this work?
 
-Steps
+The MVP Studio Process
 
-1. Well first
-1. Then next
-1. and so on
+1. Proposal
+1. Development
+1. Handoff
+1. Support
