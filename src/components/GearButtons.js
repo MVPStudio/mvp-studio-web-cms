@@ -9,7 +9,7 @@ import SponsorsGear from '../images/sponsors.svg';
 // import ClientGear from '../images/clients.svg';
 import InternGear from '../images/interns.svg';
 // import SendGear from '../images/send.svg';
-import { gearAnimation, gray, elevation } from '../utilities';
+import { gearAnimation, gray, elevation, Line } from '../utilities';
 
 const AnimationWrapper = styled.div`
   margin: 1rem auto;
@@ -83,7 +83,7 @@ export const InternProGears = ({ handleInternOrPro }) => (
   <AnimatedInternProGears style={{ boxShadow: 'none' }}>
     <InternGear onClick={() => handleInternOrPro('intern')} />
     <DeveloperGear onClick={() => handleInternOrPro('pro')} />
-    <hr />
+    <Line />
   </AnimatedInternProGears>
 );
 InternProGears.propTypes = {
