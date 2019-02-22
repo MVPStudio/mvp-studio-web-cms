@@ -16,11 +16,18 @@ const AnimationWrapper = styled.div`
   background: ${gray};
   padding: 1rem;
   text-align: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  align-items: center;
+  max-width: 550px;
+  background: #00000055;
   ${elevation[2]};
   svg {
-    width: 200px;
+    width: 150px;
     cursor: pointer;
     ${gearAnimation};
+    display: block;
   }
 `;
 export const HomeGears = () => (
@@ -31,6 +38,33 @@ export const HomeGears = () => (
     <Link to="/forms/getInvolvedFormPage">
       <DeveloperGear />
     </Link>
+    <Link to="/forms/sponsorFormPage">
+      <SponsorsGear />
+    </Link>
+  </AnimationWrapper>
+);
+
+export const ProjectGear = ({ children }) => (
+  <AnimationWrapper>
+    {children}
+    <Link to="/forms/submitProjectFormPage">
+      <ApplyGear />
+    </Link>
+  </AnimationWrapper>
+);
+
+export const InvolvedGear = ({ children }) => (
+  <AnimationWrapper>
+    {children}
+    <Link to="/forms/getInvolvedFormPage">
+      <DeveloperGear />
+    </Link>
+  </AnimationWrapper>
+);
+
+export const SponsorGear = ({ children }) => (
+  <AnimationWrapper>
+    {children}
     <Link to="/forms/sponsorFormPage">
       <SponsorsGear />
     </Link>
