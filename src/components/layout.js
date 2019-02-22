@@ -6,6 +6,7 @@ import { Spring } from 'react-spring/renderprops';
 import '../fonts/webfontkit/stylesheet.css';
 import { GlobalStyle } from '../utilities';
 import Header from './header';
+import Footer from './footer';
 
 const LayoutBody = styled.main`
   margin: 0.5rem auto;
@@ -30,11 +31,7 @@ const Layout = ({ children, pathname }) => (
     )}
     <LayoutBody>
       {children}
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
     </LayoutBody>
   </>
 );
