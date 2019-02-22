@@ -26,6 +26,23 @@ h1, h2 {
   line-height: normal;
   text-align: center;
 }
+p, ul, a {
+  letter-spacing: 1px;
+}
+p {
+  font-size: 1.2rem;
+}
+ul {
+  font-size: 1.2rem;
+}
+
+blockquote {
+  margin: .5rem auto;
+  display: table;
+  p {
+    text-align: center;
+  }
+}
 
 a {
   color: ${red};
