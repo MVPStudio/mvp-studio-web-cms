@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { red, elevation } from '../utilities';
-import MVPLogo from '../images/mvp-logo-white.svg';
+import MVPLogo from '../images/logo.svg';
 import Navbar from './navbar';
 import { HomeGears } from './GearButtons';
 
@@ -14,13 +14,18 @@ const StyledHeader = styled.header`
   background: ${red};
   ${elevation[2]};
   box-shadow: inset 0px 0px 136px 0px rgba(0, 0, 0, 0.75);
+  height: 150px;
 
   ${({ home }) =>
     home &&
     css`
-      height: 100vh;
+      height: 50vh;
       align-content: center;
-      grid-template-columns: 1fr;
+      grid-template-columns: auto;
+
+      svg {
+        height: 30vh;
+      }
 
       @media only screen and (max-width: 750px) {
         display: flex;
@@ -30,8 +35,11 @@ const StyledHeader = styled.header`
     `}
 `;
 const StyledLogo = styled(MVPLogo)`
-  max-height: 30vh;
-  margin: 1rem;
+  height: 120px;
+  margin: 1rem auto;
+  display: grid;
+  fill: white;
+  filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.75));
 `;
 
 class Header extends Component {
@@ -43,7 +51,7 @@ class Header extends Component {
         <Link to="/">
           <StyledLogo />
         </Link>
-        {homeHeader && <HomeGears />}
+        {/* {homeHeader && <HomeGears />} */}
         <Navbar />
       </StyledHeader>
     );
