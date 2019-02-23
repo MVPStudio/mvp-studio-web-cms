@@ -6,19 +6,20 @@ title: Home
 
 <project-gear>
 
-Are you a Civic Group with a vision? **_Submit your project proposal here:_**
+Are you a Civic Group with a vision? [**_Submit your project proposal_**](/forms/submitProjectFormPage)
 
 </project-gear>
 
 <involved-gear>
 
-Are you an emerging informational technology professional looking to strengthen your portfolio, an industry professional interested in mentoring or a student seeking an internship? **_Submit your application here:_**
+Are you an emerging informational technology professional looking to strengthen your portfolio, an industry professional interested in mentoring or a student seeking an internship? [**_Submit your application_**](/forms/getInvolvedFormPage)
 
 </involved-gear>
 
 <sponsor-gear>
 
-Are you a sponsor seeking to invest in our local community of civic groups, developers and interns? **_Submit your sponsorship here:_**
+Are you a sponsor seeking to invest in our local community of civic groups, developers and interns?  
+[**_Submit your sponsorship_**](/forms/sponsorFormPage)
 
 </sponsor-gear>
 
