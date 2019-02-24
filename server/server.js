@@ -1,6 +1,6 @@
 const express = require('express');
 const gatsbyExpress = require('gatsby-plugin-express');
-
+const path = require('path');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const formHandler = require('./formHandler.js');
@@ -25,12 +25,14 @@ app.patch('/api/airtable', async (req, res, next) => {
   res.send(response);
 });
 
+const publicDir = path.join(__dirname, '../public/');
+
 // serve static files before gatsbyExpress
-app.use(express.static('../public/'));
+app.use(express.static(publicDir));
 app.use(
-  gatsbyExpress('../config/gatsby-express.json', {
-    publicDir: '../public/',
-    template: '../public/404/index.html',
+  gatsbyExpress(path.join(__dirname,'../config/gatsby-express.json'), {
+    publicDir,
+    template: path.join(publicDir, '/404/index.html'),
 
     // redirects all /path/ to /path
     // should be used with gatsby-plugin-remove-trailing-slashes
