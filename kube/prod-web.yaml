@@ -36,10 +36,10 @@ spec:
         image: mvpstudio/mvp-studio-web-cms:latest
         resources:
            limits:
-              cpu: .4
+              cpu: .2
               memory: 200Mi
            requests:
-              cpu: .4
+              cpu: .2
               memory: 200Mi
         ports:
         - containerPort: 8001
