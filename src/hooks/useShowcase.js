@@ -15,7 +15,7 @@ export default params => {
               ScreenShot {
                 localFiles {
                   childImageSharp {
-                    fixed(width: 200) {
+                    fixed(width: 200, quality: 100) {
                       ...GatsbyImageSharpFixed
                     }
                   }

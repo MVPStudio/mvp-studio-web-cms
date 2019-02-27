@@ -19,14 +19,33 @@ body {
 
 }
 
- h1, h2 {
-   font-family: 'lulo_cleanone_bold', sans-serif;
-   margin-top: 0;
-   padding: .5rem;
- }
+h1, h2 {
+  font-family: 'lulo_cleanone_bold', sans-serif;
+  margin-top: 0;
+  padding: .5rem;
+  line-height: normal;
+  text-align: center;
+}
+p, ul, a {
+  letter-spacing: 1px;
+}
+p {
+  font-size: 1.2rem;
+}
+ul {
+  font-size: 1.2rem;
+}
 
- a {
-   color: ${red};
- }
+blockquote {
+  margin: .5rem auto;
+  display: table;
+  p {
+    text-align: center;
+  }
+}
+
+a {
+  color: ${red};
+}
 
 `;

@@ -9,18 +9,25 @@ import SponsorsGear from '../images/sponsors.svg';
 // import ClientGear from '../images/clients.svg';
 import InternGear from '../images/interns.svg';
 // import SendGear from '../images/send.svg';
-import { gearAnimation, gray, elevation } from '../utilities';
+import { gearAnimation, gray, elevation, Line } from '../utilities';
 
 const AnimationWrapper = styled.div`
   margin: 1rem auto;
   background: ${gray};
   padding: 1rem;
   text-align: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  align-items: center;
+  max-width: 550px;
+  background: #00000055;
   ${elevation[2]};
   svg {
-    width: 200px;
+    width: 150px;
     cursor: pointer;
     ${gearAnimation};
+    display: block;
   }
 `;
 export const HomeGears = () => (
@@ -31,6 +38,33 @@ export const HomeGears = () => (
     <Link to="/forms/getInvolvedFormPage">
       <DeveloperGear />
     </Link>
+    <Link to="/forms/sponsorFormPage">
+      <SponsorsGear />
+    </Link>
+  </AnimationWrapper>
+);
+
+export const ProjectGear = ({ children }) => (
+  <AnimationWrapper>
+    {children}
+    <Link to="/forms/submitProjectFormPage">
+      <ApplyGear />
+    </Link>
+  </AnimationWrapper>
+);
+
+export const InvolvedGear = ({ children }) => (
+  <AnimationWrapper>
+    {children}
+    <Link to="/forms/getInvolvedFormPage">
+      <DeveloperGear />
+    </Link>
+  </AnimationWrapper>
+);
+
+export const SponsorGear = ({ children }) => (
+  <AnimationWrapper>
+    {children}
     <Link to="/forms/sponsorFormPage">
       <SponsorsGear />
     </Link>
@@ -49,7 +83,7 @@ export const InternProGears = ({ handleInternOrPro }) => (
   <AnimatedInternProGears style={{ boxShadow: 'none' }}>
     <InternGear onClick={() => handleInternOrPro('intern')} />
     <DeveloperGear onClick={() => handleInternOrPro('pro')} />
-    <hr />
+    <Line />
   </AnimatedInternProGears>
 );
 InternProGears.propTypes = {

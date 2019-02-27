@@ -52,6 +52,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

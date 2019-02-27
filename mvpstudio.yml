@@ -1,0 +1,3 @@
+name: mvp-studio-web-cms
+docker_context:
+  - .
