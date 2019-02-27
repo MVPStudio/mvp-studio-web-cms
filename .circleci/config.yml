@@ -59,7 +59,8 @@ workflows:
   version: 2
   build-publish-deploy:
     jobs:
-      - build
+      - build:
+          context: web-cms
       - publish:
           context: dockerhub-publish
           requires:
