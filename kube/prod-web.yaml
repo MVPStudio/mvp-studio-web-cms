@@ -1,0 +1,100 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+   name: prod-mvpstudio-web
+---
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+   name: prod-mvpstudio-web-quota
+   namespace: prod-mvpstudio-web
+spec:
+   hard:
+      limits.cpu: 1
+      limits.memory: 500Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-mvpstudio-web-deployment
+  namespace: prod-mvpstudio-web
+  labels:
+    app: mvpstudio-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mvpstudio-web
+  template:
+    metadata:
+      labels:
+        app: mvpstudio-web
+    spec:
+      containers:
+      - name: web-server
+        image: mvpstudio/mvp-studio-web-cms:latest
+        resources:
+           limits:
+              cpu: .4
+              memory: 200Mi
+           requests:
+              cpu: .4
+              memory: 200Mi
+        ports:
+        - containerPort: 8001
+        env: 
+        - name: NODE_ENV
+          value: production
+        - name: GATSBY_AIRTABLE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: mvpstudio-web-airtable
+              key: api-key
+        - name: AIRTABLE_BASE_ID
+          valueFrom:
+            secretKeyRef:
+              name: mvpstudio-web-airtable
+              key: base-id
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvpstudio-web
+  namespace: prod-mvpstudio-web
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind: Mapping
+      name: prod-mvpstudio-web-mapping
+      host: mvpstudio.org
+      prefix: /
+      service: mvpstudio-web.prod-mvpstudio-web
+      ---
+      apiVersion: ambassador/v0
+      kind: Mapping
+      name: prod-mvpstudio-web-mapping
+      host: www.mvpstudio.org
+      prefix: /
+      service: mvpstudio-web.prod-mvpstudio-web
+      ---
+      apiVersion: ambassador/v0
+      kind: TLSContext
+      name: prod-mvpstudio-web-tls
+      hosts:
+      - mvpstudio.org
+      - www.mvpstudio.org
+      secret: mvpstudio-web-certification
+spec:
+  selector:
+     app: emerald-citizen
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8001
