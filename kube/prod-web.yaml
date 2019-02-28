@@ -22,7 +22,7 @@ metadata:
   labels:
     app: mvpstudio-web
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mvpstudio-web
@@ -59,7 +59,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
+      maxSurge: 2
       maxUnavailable: 1 
 ---
 apiVersion: v1
@@ -90,7 +90,7 @@ metadata:
       hosts:
       - mvpstudio.org
       - www.mvpstudio.org
-      secret: mvpstudio-web-certification
+      secret: mvpstudio-certification
 spec:
   selector:
      app: emerald-citizen
