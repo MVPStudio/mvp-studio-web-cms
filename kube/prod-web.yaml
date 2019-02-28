@@ -79,7 +79,7 @@ metadata:
       ---
       apiVersion: ambassador/v0
       kind: Mapping
-      name: prod-mvpstudio-web-mapping
+      name: prod-mvpstudio-web-www-mapping
       host: www.mvpstudio.org
       prefix: /
       service: mvpstudio-web.prod-mvpstudio-web
@@ -93,7 +93,7 @@ metadata:
       secret: mvpstudio-certification
 spec:
   selector:
-     app: emerald-citizen
+     app: mvpstudio-web
   ports:
   - protocol: TCP
     port: 80
