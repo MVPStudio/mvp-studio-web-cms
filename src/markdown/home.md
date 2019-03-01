@@ -29,5 +29,3 @@ Are you a sponsor seeking to invest in our local community of civic groups, deve
 > - Strengthen IT workforce with real world project based learning
 > - Build an open source library of solutions
 > - Build a reusable process that others can use
-
----
