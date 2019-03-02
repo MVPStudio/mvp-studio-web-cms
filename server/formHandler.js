@@ -12,7 +12,9 @@ const saveContact = async data =>
     const base = Airtable.base(AIRTABLE_BASE_ID);
 
     // formName directs data to correct base
-    base(data.formName).create(data, err => {
+    const { formName } = data;
+    delete data.formName;
+    base(formName).create(data, err => {
       if (err) return reject(err);
       resolve();
     });
@@ -31,7 +33,6 @@ const verifyRecaptcha = async recaptcha =>
         console.log(error);
         reject(error);
       });
-    console.log(response);
     if (!response.data.success) return reject(response.data['error-codes']);
     resolve();
   });
