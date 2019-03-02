@@ -12,6 +12,7 @@ const IndustryProFormContainer = ({ setFormState, setSubmitResponse }) => {
     { value: 'Apps', label: 'Developer: Apps' },
     { value: 'Design', label: 'Design' },
     { value: 'Agile PM', label: 'Agile PM' },
+    { value: 'Product Owner', label: 'Product Owner' },
   ];
 
   const initialValues = {
