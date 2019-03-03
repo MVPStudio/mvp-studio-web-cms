@@ -93,7 +93,7 @@ module.exports = {
         background_color: `#e85a36`,
         theme_color: `#e85a36`,
         display: `minimal-ui`,
-        icon: `src/images/2019-single-gear-orange.svg`, // This path is relative to the root of the site.
+        icon: `src/images/gearOrange.svg`, // This path is relative to the root of the site.
       },
     },
     {

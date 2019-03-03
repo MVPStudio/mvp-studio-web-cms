@@ -13,7 +13,7 @@ const rotate = keyframes`
 
 export const gearAnimation = css`
   .gear {
-    transform-origin: 49% 39%;
+    transform-origin: 50% 50%;
     transition: 0.5s;
     animation: ${rotate} 7s linear infinite;
     animation-play-state: paused;

@@ -5,10 +5,8 @@ import PropTypes from 'prop-types';
 import ApplyGear from '../images/apply.svg';
 import DeveloperGear from '../images/developers.svg';
 import SponsorsGear from '../images/sponsors.svg';
-// import ContactGear from '../images/contact.svg';
-// import ClientGear from '../images/clients.svg';
 import InternGear from '../images/interns.svg';
-// import SendGear from '../images/send.svg';
+import GearSVG from '../images/gearOrange.svg';
 import { gearAnimation, gray, elevation, Line } from '../utilities';
 
 const AnimationWrapper = styled.div`
@@ -89,3 +87,12 @@ export const InternProGears = ({ handleInternOrPro }) => (
 InternProGears.propTypes = {
   handleInternOrPro: PropTypes.func.isRequired,
 };
+
+export const Gear = ({ title, to }) => (
+  <AnimationWrapper>
+    {/* <Link to={to}> */}
+    <GearSVG />
+    <h3>{title}</h3>
+    {/* </Link> */}
+  </AnimationWrapper>
+);
