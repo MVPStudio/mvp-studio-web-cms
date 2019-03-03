@@ -17,7 +17,7 @@ const FooterContactForm = ({ setFormState, setSubmitResponse }) => {
     <Formik
       initialValues={initialValues}
       onSubmit={async (values, actions) => {
-        formSubmit(values, actions, setSubmitResponse, setFormState);
+        formSubmit(values, actions, setFormState, setSubmitResponse);
       }}
       render={({
         handleSubmit,
