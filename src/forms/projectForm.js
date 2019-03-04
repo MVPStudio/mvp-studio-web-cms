@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'formik';
 import PropTypes from 'prop-types';
+import MVPRecaptcha, { executeCaptcha } from './MVPRecaptcha';
 // import * as yup from 'yup'
 import StyledForm from './styledForm';
 
@@ -9,14 +10,22 @@ export default class ProjectForm extends Component {
     handleSubmit: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     touched: PropTypes.object.isRequired,
-    isSubmitting: PropTypes.bool,
-    isValid: PropTypes.bool,
+    isSubmitting: PropTypes.bool.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    setFieldValue: PropTypes.func.isRequired,
   };
 
   render() {
-    const { handleSubmit, errors, touched, isSubmitting, isValid } = this.props;
+    const {
+      handleSubmit,
+      errors,
+      touched,
+      isSubmitting,
+      isValid,
+      setFieldValue,
+    } = this.props;
     return (
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={executeCaptcha}>
         <div>
           <h3>Project Onboarding Form</h3>
           <p>Please provide the following information:</p>
@@ -74,9 +83,12 @@ export default class ProjectForm extends Component {
           Existing Sponsors
           <Field component="textarea" name="Existing_sponsors" />
         </label>
-        <button type="submit" disabled={isSubmitting || !isValid}>
-          Submit
-        </button>
+        <MVPRecaptcha
+          setFieldValue={setFieldValue}
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          isValid={isValid}
+        />
       </StyledForm>
     );
   }

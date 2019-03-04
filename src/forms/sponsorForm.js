@@ -3,14 +3,15 @@ import { Field } from 'formik';
 import PropTypes, { object } from 'prop-types';
 import Select from 'react-select';
 import StyledForm from './styledForm';
+import MVPRecaptcha, { executeCaptcha } from './MVPRecaptcha';
 
 export default class SponsorForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     touched: PropTypes.object.isRequired,
-    isSubmitting: PropTypes.bool,
-    isValid: PropTypes.bool,
+    isSubmitting: PropTypes.bool.isRequired,
+    isValid: PropTypes.bool.isRequired,
     setFieldValue: PropTypes.func.isRequired,
     sponsorOptions: PropTypes.arrayOf(object).isRequired,
     showcaseOptions: PropTypes.arrayOf(object).isRequired,
@@ -30,7 +31,7 @@ export default class SponsorForm extends Component {
       typeOfOrganization,
     } = this.props;
     return (
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={executeCaptcha}>
         <div>
           <h3>Sponsor Form</h3>
           <p>Please provide the following information:</p>
@@ -97,9 +98,12 @@ export default class SponsorForm extends Component {
             }
           />
         </label>
-        <button type="submit" disabled={isSubmitting || !isValid}>
-          Submit
-        </button>
+        <MVPRecaptcha
+          setFieldValue={setFieldValue}
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          isValid={isValid}
+        />
       </StyledForm>
     );
   }

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Field } from 'formik';
 import PropTypes, { object } from 'prop-types';
 import Select from 'react-select';
+import MVPRecaptcha, { executeCaptcha } from './MVPRecaptcha';
 import StyledForm from './styledForm';
 
 export default class IndustryProForm extends PureComponent {
@@ -9,8 +10,8 @@ export default class IndustryProForm extends PureComponent {
     handleSubmit: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     touched: PropTypes.object.isRequired,
-    isSubmitting: PropTypes.bool,
-    isValid: PropTypes.bool,
+    isSubmitting: PropTypes.bool.isRequired,
+    isValid: PropTypes.bool.isRequired,
     setFieldValue: PropTypes.func.isRequired,
     skillOptions: PropTypes.arrayOf(object).isRequired,
     showcaseOptions: PropTypes.arrayOf(object).isRequired,
@@ -28,7 +29,7 @@ export default class IndustryProForm extends PureComponent {
       showcaseOptions,
     } = this.props;
     return (
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={executeCaptcha}>
         <div>
           <h3>Industry Professional Form</h3>
           <p>Please provide the following information:</p>
@@ -84,9 +85,12 @@ export default class IndustryProForm extends PureComponent {
             }
           />
         </label>
-        <button type="submit" disabled={isSubmitting || !isValid}>
-          Submit
-        </button>
+        <MVPRecaptcha
+          setFieldValue={setFieldValue}
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          isValid={isValid}
+        />
       </StyledForm>
     );
   }

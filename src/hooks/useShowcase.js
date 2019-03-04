@@ -6,6 +6,7 @@ export default params => {
       allAirtable(filter: { table: { eq: "Showcase" } }) {
         edges {
           node {
+            recordId
             data {
               Name
               Approved
@@ -31,7 +32,7 @@ export default params => {
     return showcaseProjects;
   }
   return showcaseProjects.map(({ node }) => ({
-    value: node.data.Name,
+    value: node.recordId,
     label: node.data.Name,
   }));
 };

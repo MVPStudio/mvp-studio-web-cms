@@ -8,7 +8,7 @@ import {
   ProjectGear,
   InvolvedGear,
   SponsorGear,
-  Gear,
+  GearLink,
 } from '../components/GearButtons';
 
 const IndexPage = ({ location }) => {
@@ -31,9 +31,7 @@ const IndexPage = ({ location }) => {
   return (
     <Layout pathname={location.pathname}>
       <SEO title="MVP Studio" keywords={[`gatsby`, `application`, `react`]} />
-      <Gear title="Test" to="/" />
       {renderAst(homeHTML.htmlAst)}
-      {/* <div dangerouslySetInnerHTML={{ __html: homeHTML.markdownRemark.html }} /> */}
     </Layout>
   );
 };

@@ -4,14 +4,15 @@ import PropTypes, { object } from 'prop-types';
 import Select from 'react-select';
 // import * as yup from 'yup'
 import StyledForm from './styledForm';
+import MVPRecaptcha, { executeCaptcha } from './MVPRecaptcha';
 
 export default class InternForm extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     touched: PropTypes.object.isRequired,
-    isSubmitting: PropTypes.bool,
-    isValid: PropTypes.bool,
+    isSubmitting: PropTypes.bool.isRequired,
+    isValid: PropTypes.bool.isRequired,
     setFieldValue: PropTypes.func.isRequired,
     availabilityOptions: PropTypes.arrayOf(object).isRequired,
     skillOptions: PropTypes.arrayOf(object).isRequired,
@@ -29,7 +30,7 @@ export default class InternForm extends Component {
       skillOptions,
     } = this.props;
     return (
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={executeCaptcha}>
         <div>
           <h3>Intern Form</h3>
           <p>Please provide the following information:</p>
@@ -99,9 +100,12 @@ export default class InternForm extends Component {
             name="Looking_For_Capstone"
           />
         </label>
-        <button type="submit" disabled={isSubmitting || !isValid}>
-          Submit
-        </button>
+        <MVPRecaptcha
+          setFieldValue={setFieldValue}
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          isValid={isValid}
+        />
       </StyledForm>
     );
   }
