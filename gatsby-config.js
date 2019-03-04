@@ -5,7 +5,7 @@ module.exports = {
     title: `MVP Studio`,
     description: `We are a collaborative and fun group of web professionals who strive to provide cost–effective design solutions that support your organization's mission and suits your exact needs.`,
     author: `Greg McKelvey`,
-    siteUrl: 'https://mvpstudio.github.io/mvp-studio-web-cms/',
+    siteUrl: 'https://mvpstudio.org',
   },
   pathPrefix: '/mvp-studio-web-cms',
 
