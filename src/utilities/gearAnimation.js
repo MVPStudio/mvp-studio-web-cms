@@ -17,8 +17,9 @@ export const gearAnimation = css`
     transition: 0.5s;
     animation: ${rotate} 7s linear infinite;
     animation-play-state: paused;
+    fill: white;
   }
-  :hover > .gear {
+  :hover .gear {
     animation-play-state: running;
     fill: ${red};
   }

@@ -7,92 +7,108 @@ import DeveloperGear from '../images/developers.svg';
 import SponsorsGear from '../images/sponsors.svg';
 import InternGear from '../images/interns.svg';
 import GearSVG from '../images/gearOrange.svg';
-import { gearAnimation, gray, elevation, Line } from '../utilities';
+import GearWrench from '../images/gearWrench.svg';
+import GearEnvelope from '../images/gearEnvelope.svg';
+import GearHammer from '../images/gearHammer.svg';
+import GearNut from '../images/gearNut.svg';
+import GearScrew from '../images/gearScrew.svg';
+import { gearAnimation, elevation, Line } from '../utilities';
 
 const AnimationWrapper = styled.div`
   margin: 1rem auto;
-  background: ${gray};
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 150px;
+    cursor: pointer;
+    display: block;
+    fill: white;
+  }
+  a {
+    ${gearAnimation};
+  }
+  h3 {
+    ${gearAnimation};
+    margin: 0;
+    font-size: 1.6rem;
+  }
+`;
+const HomeCard = styled.div`
+  margin: 1rem auto;
   padding: 1rem;
   text-align: center;
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 10px;
   align-items: center;
+  justify-content: center;
   max-width: 550px;
   background: #00000055;
   ${elevation[2]};
-  svg {
-    width: 150px;
-    cursor: pointer;
-    ${gearAnimation};
-    display: block;
-  }
 `;
-export const HomeGears = () => (
-  <AnimationWrapper>
-    <Link to="/forms/submitProjectFormPage">
-      <ApplyGear />
-    </Link>
-    <Link to="/forms/getInvolvedFormPage">
-      <DeveloperGear />
-    </Link>
-    <Link to="/forms/sponsorFormPage">
-      <SponsorsGear />
-    </Link>
-  </AnimationWrapper>
-);
 
 export const ProjectGear = ({ children }) => (
-  <AnimationWrapper>
+  <HomeCard>
     {children}
-    <Link to="/forms/submitProjectFormPage">
-      <ApplyGear />
-    </Link>
-  </AnimationWrapper>
+    <GearLink to="/forms/submitProjectFormPage" title="Apply">
+      <GearEnvelope />
+    </GearLink>
+  </HomeCard>
 );
 
 export const InvolvedGear = ({ children }) => (
-  <AnimationWrapper>
+  <HomeCard>
     {children}
-    <Link to="/forms/getInvolvedFormPage">
-      <DeveloperGear />
-    </Link>
-  </AnimationWrapper>
+    <GearLink to="/forms/getInvolvedFormPage" title="Get Involved">
+      <GearWrench />
+    </GearLink>
+  </HomeCard>
 );
 
 export const SponsorGear = ({ children }) => (
-  <AnimationWrapper>
+  <HomeCard>
     {children}
-    <Link to="/forms/sponsorFormPage">
-      <SponsorsGear />
-    </Link>
-  </AnimationWrapper>
+    <GearLink to="/forms/sponsorFormPage" title="Sponsors">
+      <GearHammer />
+    </GearLink>
+  </HomeCard>
 );
 
-const AnimatedInternProGears = styled(AnimationWrapper)`
+const StyledInternProGears = styled(HomeCard)`
   box-shadow: none;
+  cursor: pointer;
   svg {
     width: 150px;
     margin: 0 2rem;
   }
+  ${gearAnimation};
 `;
 
 export const InternProGears = ({ handleInternOrPro }) => (
-  <AnimatedInternProGears style={{ boxShadow: 'none' }}>
-    <InternGear onClick={() => handleInternOrPro('intern')} />
-    <DeveloperGear onClick={() => handleInternOrPro('pro')} />
+  <StyledInternProGears>
+    <AnimationWrapper onClick={() => handleInternOrPro('intern')}>
+      <GearScrew />
+      <h3>Intern</h3>
+    </AnimationWrapper>
+    <AnimationWrapper>
+      <GearNut onClick={() => handleInternOrPro('pro')} />
+      <h3>Industry Pro</h3>
+    </AnimationWrapper>
     <Line />
-  </AnimatedInternProGears>
+  </StyledInternProGears>
 );
 InternProGears.propTypes = {
   handleInternOrPro: PropTypes.func.isRequired,
 };
 
-export const Gear = ({ title, to }) => (
+export const GearLink = ({ title, to, children }) => (
   <AnimationWrapper>
-    {/* <Link to={to}> */}
-    <GearSVG />
-    <h3>{title}</h3>
-    {/* </Link> */}
+    <Link to={to}>
+      {children}
+      <h3>{title}</h3>
+    </Link>
   </AnimationWrapper>
 );
