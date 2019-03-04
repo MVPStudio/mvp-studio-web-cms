@@ -33,7 +33,7 @@ const MVPRecaptcha = ({
       </button>
       <Recaptcha
         ref={e => (recaptchaInstance = e)}
-        sitekey="6LccvJQUAAAAANdVDhwSeAM00jvgUabGSi6Vjbza"
+        sitekey="6LcBOpUUAAAAAAqXYSvU71jm4lXwCJ_Xni1Kvz5q"
         render="explicit"
         theme="dark"
         verifyCallback={response => {
