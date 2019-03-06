@@ -5,7 +5,7 @@ module.exports = {
     title: `MVP Studio`,
     description: `We are a collaborative and fun group of web professionals who strive to provide cost–effective design solutions that support your organization's mission and suits your exact needs.`,
     author: `Greg McKelvey`,
-    siteUrl: 'https://mvpstudio.github.io/mvp-studio-web-cms/',
+    siteUrl: 'https://mvpstudio.org',
   },
   pathPrefix: '/mvp-studio-web-cms',
 
@@ -62,6 +62,14 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-recaptcha`,
+      options: {
+        async: true,
+        defer: true,
+        // args: `?onload=onloadCallback&render=explicit`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
@@ -85,7 +93,7 @@ module.exports = {
         background_color: `#e85a36`,
         theme_color: `#e85a36`,
         display: `minimal-ui`,
-        icon: `src/images/single-gear.svg`, // This path is relative to the root of the site.
+        icon: `src/images/gearOrange.svg`, // This path is relative to the root of the site.
       },
     },
     {

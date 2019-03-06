@@ -14,8 +14,6 @@ class GetInvolvedFormPage extends Component {
   };
 
   handleInternOrPro = (form, e) => {
-    console.log(form);
-    console.log(e);
     this.setState({ internOrPro: form });
   };
 

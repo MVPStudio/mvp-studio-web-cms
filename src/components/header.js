@@ -5,7 +5,6 @@ import styled, { css } from 'styled-components';
 import { red, elevation } from '../utilities';
 import MVPLogo from '../images/logo.svg';
 import Navbar from './navbar';
-import { HomeGears } from './GearButtons';
 
 const StyledHeader = styled.header`
   display: grid;
@@ -51,7 +50,6 @@ class Header extends Component {
         <Link to="/">
           <StyledLogo />
         </Link>
-        {/* {homeHeader && <HomeGears />} */}
         <Navbar />
       </StyledHeader>
     );

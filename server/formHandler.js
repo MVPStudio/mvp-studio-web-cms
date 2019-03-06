@@ -1,7 +1,12 @@
 require('dotenv').config();
 const Airtable = require('airtable');
+const axios = require('axios');
 
-const { GATSBY_AIRTABLE_API_KEY, AIRTABLE_BASE_ID } = process.env;
+const {
+  GATSBY_AIRTABLE_API_KEY,
+  AIRTABLE_BASE_ID,
+  RECAPTCHA_SECRET,
+} = process.env;
 
 const saveContact = async data =>
   new Promise((resolve, reject) => {
@@ -11,14 +16,37 @@ const saveContact = async data =>
     const base = Airtable.base(AIRTABLE_BASE_ID);
 
     // formName directs data to correct base
-    base(data.formName).create(data, err => {
+    const { formName } = data;
+    // discard unnecessary form data
+    delete data.formName;
+    delete data.recaptcha;
+    // send form data
+    base(formName).create(data, err => {
       if (err) return reject(err);
       resolve();
     });
   });
 
+const verifyRecaptcha = async recaptcha =>
+  new Promise(async (resolve, reject) => {
+    const secret = RECAPTCHA_SECRET;
+    const response = await axios
+      .post(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${recaptcha}`,
+        {},
+      )
+      .then(res => res)
+      .catch(error => {
+        console.log(error);
+        reject(error);
+      });
+    if (!response.data.success) return reject(response.data['error-codes']);
+    resolve();
+  });
+
 module.exports = async function handler(event) {
   try {
+    await verifyRecaptcha(event.recaptcha);
     await saveContact(event);
     return {
       statusCode: 200,

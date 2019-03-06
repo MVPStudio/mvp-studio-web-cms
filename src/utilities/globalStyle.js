@@ -26,7 +26,7 @@ h1, h2 {
   line-height: normal;
   text-align: center;
 }
-p, ul, a {
+p, ul, a, h3 {
   letter-spacing: 1px;
 }
 p {
