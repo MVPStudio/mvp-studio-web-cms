@@ -95,7 +95,7 @@ metadata:
       hosts:
       - mvpstudio.org
       - www.mvpstudio.org
-      secret: mvpstudio-certification
+      secret: mvpstudio-www-certification
 spec:
   selector:
     app: mvpstudio-web
