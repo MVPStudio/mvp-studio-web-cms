@@ -14,7 +14,7 @@ export default class SponsorForm extends Component {
     isValid: PropTypes.bool.isRequired,
     setFieldValue: PropTypes.func.isRequired,
     sponsorOptions: PropTypes.arrayOf(object).isRequired,
-    showcaseOptions: PropTypes.arrayOf(object).isRequired,
+    // showcaseOptions: PropTypes.arrayOf(object).isRequired,
     typeOfOrganization: PropTypes.arrayOf(object).isRequired,
   };
 
@@ -27,7 +27,7 @@ export default class SponsorForm extends Component {
       isValid,
       setFieldValue,
       sponsorOptions,
-      showcaseOptions,
+      // showcaseOptions,
       typeOfOrganization,
     } = this.props;
     return (
