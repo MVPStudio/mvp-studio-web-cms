@@ -62,14 +62,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-recaptcha`,
-      options: {
-        async: true,
-        defer: true,
-        // args: `?onload=onloadCallback&render=explicit`,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
