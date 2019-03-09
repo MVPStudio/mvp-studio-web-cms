@@ -22,12 +22,6 @@ const SponsorFormContainer = ({ setFormState, setSubmitResponse }) => {
 
   const initialValues = {
     formName: 'Sponsor_Form', // Must be same as airtable base name
-    Name: '',
-    Email: '',
-    Type_Of_Organization: [],
-    Project_Types_Interest: '',
-    Interested_In_Projects: [],
-    Type_Of_Sponsorship: [],
   };
 
   const showcaseOptions = useShowcase();

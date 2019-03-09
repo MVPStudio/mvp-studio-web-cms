@@ -70,7 +70,7 @@ export default class SponsorForm extends Component {
           Types of Projects Interested in:
           <Field component="textarea" name="Project_Types_Interest" />
         </label>
-        <label>
+        {/* <label>
           Interested in Projects:
           <Field
             className="select"
@@ -83,7 +83,7 @@ export default class SponsorForm extends Component {
               setFieldValue('Interested_In_Projects', value.map(v => v.value))
             }
           />
-        </label>
+        </label> */}
         <label>
           Type of Sponsorship:
           <Field

@@ -71,7 +71,7 @@ export default class IndustryProForm extends PureComponent {
           />
         </label>
 
-        <label>
+        {/* <label>
           Interested in Projects:
           <Field
             className="select"
@@ -84,7 +84,7 @@ export default class IndustryProForm extends PureComponent {
               setFieldValue('Interested_In_Projects', value.map(v => v.value))
             }
           />
-        </label>
+        </label> */}
         <MVPRecaptcha
           setFieldValue={setFieldValue}
           handleSubmit={handleSubmit}
