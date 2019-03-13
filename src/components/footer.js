@@ -15,7 +15,7 @@ const ContactButton = styled.button`
 
 const StyledFooter = styled.footer`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-columns: repeat(auto-fit, minMax(300px, 400px));
   justify-content: center;
   text-align: center;
 `;

@@ -36,7 +36,7 @@ const HomeCard = styled.div`
   padding: 1rem;
   text-align: center;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(auto-fit, minMax(200px, auto));
   grid-gap: 10px;
   align-items: center;
   justify-content: center;
