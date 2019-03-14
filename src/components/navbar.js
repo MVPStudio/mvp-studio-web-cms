@@ -11,18 +11,23 @@ const NavList = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: 0;
   padding-bottom: 1rem;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     flex-direction: column;
+    li {
+      font-size: 0.7rem;
+    }
   }
 `;
 const NavLi = styled.li`
   display: inline-block;
-  margin-right: 1rem;
-
+  margin: 0.2rem;
+  font-size: 1rem;
   a {
+    letter-spacing: 0px;
     transition: 0.1s ease;
     &:hover,
     &:active {

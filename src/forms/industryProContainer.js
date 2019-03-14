@@ -22,7 +22,7 @@ const IndustryProFormContainer = ({ setFormState, setSubmitResponse }) => {
     Email: '',
     Github: '',
     Skill_Category: [],
-    Interested_In_Projects: [],
+    // Interested_In_Projects: [],
   };
 
   const showcaseOptions = useShowcase();

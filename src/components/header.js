@@ -8,12 +8,13 @@ import Navbar from './navbar';
 
 const StyledHeader = styled.header`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3fr;
   justify-content: space-around;
   background: ${red};
   ${elevation[2]};
   box-shadow: inset 0px 0px 136px 0px rgba(0, 0, 0, 0.75);
   height: 150px;
+  padding-bottom: 0.5rem;
 
   ${({ home }) =>
     home &&
@@ -23,18 +24,12 @@ const StyledHeader = styled.header`
       grid-template-columns: auto;
 
       svg {
-        height: 30vh;
-      }
-
-      @media only screen and (max-width: 750px) {
-        display: flex;
-        flex-direction: column;
-        height: auto;
+        max-height: 300px;
       }
     `}
 `;
 const StyledLogo = styled(MVPLogo)`
-  height: 120px;
+  max-height: 120px;
   margin: 1rem auto;
   display: grid;
   fill: white;

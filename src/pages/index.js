@@ -8,7 +8,6 @@ import {
   ProjectGear,
   InvolvedGear,
   SponsorGear,
-  GearLink,
 } from '../components/GearButtons';
 
 const IndexPage = ({ location }) => {

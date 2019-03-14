@@ -2,11 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import ApplyGear from '../images/apply.svg';
-import DeveloperGear from '../images/developers.svg';
-import SponsorsGear from '../images/sponsors.svg';
-import InternGear from '../images/interns.svg';
-import GearSVG from '../images/gearOrange.svg';
 import GearWrench from '../images/gearWrench.svg';
 import GearEnvelope from '../images/gearEnvelope.svg';
 import GearHammer from '../images/gearHammer.svg';
@@ -41,7 +36,7 @@ const HomeCard = styled.div`
   padding: 1rem;
   text-align: center;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(auto-fit, minMax(200px, auto));
   grid-gap: 10px;
   align-items: center;
   justify-content: center;
@@ -58,6 +53,9 @@ export const ProjectGear = ({ children }) => (
     </GearLink>
   </HomeCard>
 );
+ProjectGear.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export const InvolvedGear = ({ children }) => (
   <HomeCard>
@@ -67,6 +65,9 @@ export const InvolvedGear = ({ children }) => (
     </GearLink>
   </HomeCard>
 );
+InvolvedGear.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export const SponsorGear = ({ children }) => (
   <HomeCard>
@@ -76,6 +77,23 @@ export const SponsorGear = ({ children }) => (
     </GearLink>
   </HomeCard>
 );
+SponsorGear.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+const GearLink = ({ title, to, children }) => (
+  <AnimationWrapper>
+    <Link to={to}>
+      {children}
+      <h3>{title}</h3>
+    </Link>
+  </AnimationWrapper>
+);
+GearLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};
 
 const StyledInternProGears = styled(HomeCard)`
   box-shadow: none;
@@ -103,12 +121,3 @@ export const InternProGears = ({ handleInternOrPro }) => (
 InternProGears.propTypes = {
   handleInternOrPro: PropTypes.func.isRequired,
 };
-
-export const GearLink = ({ title, to, children }) => (
-  <AnimationWrapper>
-    <Link to={to}>
-      {children}
-      <h3>{title}</h3>
-    </Link>
-  </AnimationWrapper>
-);

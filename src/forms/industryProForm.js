@@ -14,7 +14,7 @@ export default class IndustryProForm extends PureComponent {
     isValid: PropTypes.bool.isRequired,
     setFieldValue: PropTypes.func.isRequired,
     skillOptions: PropTypes.arrayOf(object).isRequired,
-    showcaseOptions: PropTypes.arrayOf(object).isRequired,
+    // showcaseOptions: PropTypes.arrayOf(object).isRequired,
   };
 
   render() {
@@ -26,7 +26,7 @@ export default class IndustryProForm extends PureComponent {
       isValid,
       setFieldValue,
       skillOptions,
-      showcaseOptions,
+      // showcaseOptions,
     } = this.props;
     return (
       <StyledForm onSubmit={executeCaptcha}>
@@ -71,7 +71,7 @@ export default class IndustryProForm extends PureComponent {
           />
         </label>
 
-        <label>
+        {/* <label>
           Interested in Projects:
           <Field
             className="select"
@@ -84,7 +84,7 @@ export default class IndustryProForm extends PureComponent {
               setFieldValue('Interested_In_Projects', value.map(v => v.value))
             }
           />
-        </label>
+        </label> */}
         <MVPRecaptcha
           setFieldValue={setFieldValue}
           handleSubmit={handleSubmit}

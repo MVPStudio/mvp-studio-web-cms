@@ -5,10 +5,9 @@ import Img from 'gatsby-image';
 import useShowcase from '../hooks/useShowcase';
 
 const ShowcaseCard = styled.div`
-  width: 700px;
   margin: 0.5rem auto;
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: repeat(auto-fit, minMax(200px, auto));
   grid-gap: 1rem;
   align-items: center;
   a {
@@ -33,6 +32,7 @@ const ShowcaseCards = () => {
         <Img
           className="screenshot"
           fixed={ScreenShot.localFiles[0].childImageSharp.fixed}
+          style={{ margin: '0 auto' }}
         />
         <div>
           <a href={URL}>
