@@ -26,7 +26,8 @@ CI build & deployment uses a [CircleCI config](https://github.com/MVPStudio/mvp-
 
 ## Deploy
 
-Deployed on kubernetes, config is [here](https://github.com/MVPStudio/mvp-studio-web-cms/blob/master/kube/prod-web.yaml)
+Deployed on kubernetes, config is [here](https://github.com/MVPStudio/mvp-studio-web-cms/blob/master/kube/prod-web.yaml).
+
 If you are working on this project you will have been setup with [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
 See the running pods for a project/namespace:
