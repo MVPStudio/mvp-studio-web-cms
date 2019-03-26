@@ -61,3 +61,8 @@ config  public  server
 
 mvp@prod-mvpstudio-web-deployment-5764c44b6d-xbzgr:~/app$ exit
 ```
+
+**Manually Deploy**
+```
+kubectl apply -f ./kube
+```
