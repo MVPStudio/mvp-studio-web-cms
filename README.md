@@ -18,7 +18,7 @@ npm gatsby develop
 
 ## CI
 
-The server and client are build into a [docker container](https://github.com/MVPStudio/mvp-studio-web-cms/blob/master/Dockerfile).
+The server and client are built into a [docker container](https://github.com/MVPStudio/mvp-studio-web-cms/blob/master/Dockerfile).
 
 The container is published to [DockerHub](https://cloud.docker.com/u/mvpstudio/repository/docker/mvpstudio/mvp-studio-web-cms).
 
