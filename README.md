@@ -30,7 +30,9 @@ Deployed on kubernetes, config is [here](https://github.com/MVPStudio/mvp-studio
 
 If you are working on this project you will have been setup with [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
-See the running pods for a project/namespace:
+#### Common Operations
+
+**See the running pods for a project/namespace:**
 ```
 kubectl get pods --namespace=prod-mvpstudio-web
 
@@ -38,20 +40,24 @@ NAME                                             READY     STATUS    RESTARTS   
 prod-mvpstudio-web-deployment-5764c44b6d-42ntl   1/1       Running   0          10d
 ```
 
-Get the logs from the contianer:
+**Get the logs from the contianer:**
 ```
 kubectl logs prod-mvpstudio-web-deployment-5764c44b6d-42ntl --namespace=prod-mvpstudio-web
+
+MVP-studio node server listening on port 8001!
 ```
 
-Restart the container:
+**Restart the container:**
 ```
 kubectl delete pod prod-mvpstudio-web-deployment-5764c44b6d-42ntl --namespace=prod-mvpstudio-web
 ```
 
-SSH into the container
+**SSH into the container**
 ```
 kubectl exec -it prod-mvpstudio-web-deployment-5764c44b6d-42ntl --namespace=prod-mvpstudio-web -- /bin/bash
 
 mvp@prod-mvpstudio-web-deployment-5764c44b6d-xbzgr:~/app$ ls
 config  public  server
+
+mvp@prod-mvpstudio-web-deployment-5764c44b6d-xbzgr:~/app$ exit
 ```
