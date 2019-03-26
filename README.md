@@ -32,9 +32,14 @@ If you are working on this project you will have been setup with [kubectl](https
 
 #### Common Operations
 
+**Set the namespace for your commands (only needs to be done once):**
+```
+kubectl config set-context $(kubectl config current-context) --namespace=prod-mvpstudio-web
+```
+
 **See the running pods for a project/namespace:**
 ```
-kubectl get pods --namespace=prod-mvpstudio-web
+kubectl get pods
 
 NAME                                             READY     STATUS    RESTARTS   AGE
 prod-mvpstudio-web-deployment-5764c44b6d-42ntl   1/1       Running   0          10d
@@ -42,19 +47,19 @@ prod-mvpstudio-web-deployment-5764c44b6d-42ntl   1/1       Running   0          
 
 **Get the logs from the contianer:**
 ```
-kubectl logs prod-mvpstudio-web-deployment-5764c44b6d-42ntl --namespace=prod-mvpstudio-web
+kubectl logs prod-mvpstudio-web-deployment-5764c44b6d-42ntl
 
 MVP-studio node server listening on port 8001!
 ```
 
 **Restart the container:**
 ```
-kubectl delete pod prod-mvpstudio-web-deployment-5764c44b6d-42ntl --namespace=prod-mvpstudio-web
+kubectl delete pod prod-mvpstudio-web-deployment-5764c44b6d-42ntl
 ```
 
 **SSH into the container**
 ```
-kubectl exec -it prod-mvpstudio-web-deployment-5764c44b6d-42ntl --namespace=prod-mvpstudio-web -- /bin/bash
+kubectl exec -it prod-mvpstudio-web-deployment-5764c44b6d-42ntl -- /bin/bash
 
 mvp@prod-mvpstudio-web-deployment-5764c44b6d-xbzgr:~/app$ ls
 config  public  server
