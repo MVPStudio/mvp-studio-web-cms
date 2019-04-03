@@ -13,10 +13,9 @@ jobs:
             - public
             - config
             - server
-            - mvpstudio.yml
+            - .mvpstudio
             - Dockerfile
             - .git
-            - kube
 
   publish:
     docker:
