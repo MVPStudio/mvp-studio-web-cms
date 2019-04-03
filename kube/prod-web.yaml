@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: web-server
-          image: mvpstudio/mvp-studio-web-cms:latest
+          image: mvpstudio/mvp-studio-web-cms:50f6a3c
           resources:
             limits:
               cpu: .2
