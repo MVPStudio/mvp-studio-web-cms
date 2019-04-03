@@ -20,9 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   next();
 // });
 
-app.patch('/api/airtable', async (req, res, next) => {
-  const response = await formHandler(req.body);
-  res.send(response);
+app.patch('/api/airtable', (req, res, next) => {
+  formHandler(req.body)
+    .then(response => res.send(response))
+    .catch(e => next(e));
 });
 
 const publicDir = path.join(__dirname, '../public/');
@@ -30,7 +31,7 @@ const publicDir = path.join(__dirname, '../public/');
 // serve static files before gatsbyExpress
 app.use(express.static(publicDir));
 app.use(
-  gatsbyExpress(path.join(__dirname,'../config/gatsby-express.json'), {
+  gatsbyExpress(path.join(__dirname, '../config/gatsby-express.json'), {
     publicDir,
     template: path.join(publicDir, '/404/index.html'),
 
