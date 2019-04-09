@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import FormSubmitAnimation from '../forms/formSubmitAnimation';
 import FooterContactForm from '../forms/footerContactForm';
+import ContactDeets from './contactDeets';
 import { red, Line } from '../utilities';
 
 const ContactButton = styled.button`
@@ -24,6 +25,8 @@ const Footer = () => {
   const [showForm, setShowForm] = useState(false);
   return (
     <>
+      <Line />
+      <ContactDeets />
       <Line />
       <StyledFooter>
         <div>
