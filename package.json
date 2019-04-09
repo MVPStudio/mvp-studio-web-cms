@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "mvp-studio-web-cms",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
+  "description": "A Gatsby site that uses md files in github as a cms",
+  "version": "0.1.1",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
