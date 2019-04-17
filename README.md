@@ -1,7 +1,9 @@
-# mvp-studio-web-cms
+# mvp-studio-web-cms 
+[![CircleCI](https://circleci.com/gh/MVPStudio/mvp-studio-web-cms.svg?style=svg)](https://circleci.com/gh/MVPStudio/mvp-studio-web-cms)
 
 The repo for the static site.
 mvpstudio.org
+
 
 ## CMS
 Each page has a markdown file associated with it for content editing.
