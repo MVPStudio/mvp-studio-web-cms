@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<header
+  className="sc-bxivhb bpVUZS"
+>
+  <a
+    href="/"
+  >
+    <test-file-stub
+      className="sc-ifAKCX hrYxyy"
+    />
+  </a>
+  <ul
+    className="sc-bwzfXH cPoCOu"
+  >
+    <li
+      className="sc-htpNat erSIBh"
+    >
+      <a
+        href="/"
+        style={
+          Object {
+            "color": "white",
+            "padding": "0.3rem",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Home
+      </a>
+    </li>
+    <li
+      className="sc-htpNat erSIBh"
+    >
+      <a
+        href="/who-we-are"
+        style={
+          Object {
+            "color": "white",
+            "padding": "0.3rem",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Who We Are
+      </a>
+    </li>
+    <li
+      className="sc-htpNat erSIBh"
+    >
+      <a
+        href="/how-it-works"
+        style={
+          Object {
+            "color": "white",
+            "padding": "0.3rem",
+            "textDecoration": "none",
+          }
+        }
+      >
+        How It Works
+      </a>
+    </li>
+    <li
+      className="sc-htpNat erSIBh"
+    >
+      <a
+        href="/showcase"
+        style={
+          Object {
+            "color": "white",
+            "padding": "0.3rem",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Showcase
+      </a>
+    </li>
+  </ul>
+</header>
+`;
