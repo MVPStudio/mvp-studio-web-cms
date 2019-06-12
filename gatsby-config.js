@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        // apiKey: process.env.GATSBY_AIRTABLE_API_KEY, // this plugin looks for GATSBY_AIRTABLE_API_KEY automatically if environment variables are required above.
+        apiKey: process.env.GATSBY_AIRTABLE_API_KEY,
         tables: [
           {
             baseId: `appqzdNgU137oV8B3`, // found in api docs, check the 'show api' button, and is the number '...base('YOUR_BASE ID')
