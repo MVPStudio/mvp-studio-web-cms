@@ -14,8 +14,8 @@ Each page has a markdown file associated with it for content editing.
 To get started, clone and...
 
 ```sh
-npm install
-npm gatsby develop
+yarn install
+yarn gatsby develop
 ```
 
 ## CI
