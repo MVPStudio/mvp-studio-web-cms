@@ -1,5 +1,5 @@
 # Tech Spec
-![overview](https://i.imgur.com/hbz9N5L.png)
+![overview](https://raw.githubusercontent.com/MVPStudio/mvp-studio-web-cms/2603430405ea7a0a354c437a880d13460b2322af/spec/techSpec.png)
 
 ## Components
 
