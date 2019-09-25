@@ -29,13 +29,13 @@ Serving the static Gatsby output.
 
 ### API Endpoints
 
-* `/api/{project}` (GET)
+* `/api/project/{id}` (GET)
 
     Return project info.
-* `/api/{project}` (POST)
+* `/api/project` (POST)
 
     Add a new project to the database.
-* `/api/{project}` (PUT)
+* `/api/project/{id}` (PUT)
 
     Update an existing project.
 * `/api/projects` (GET)
