@@ -49,6 +49,17 @@ Serving the static Gatsby output.
 
 To store our project info.
 
+```
+Table: Projects
+    id: UUID, PRIMARY KEY
+    project_name: VARCHAR(256), NOT NULL
+    org_url: VARCHAR(2083)
+    po_name: VARCHAR(128), NOT NULL
+    po_email: VARCHAR(256), NOT NULL
+    description: VARCHAR(512), NOT NULL
+    description_link: VARCHAR(2083)
+```
+
 ### Gatsby
 
 Where our current static pages are made.
