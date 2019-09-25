@@ -12,12 +12,12 @@ Handles all form submissions.
   - Store info in local storage.
 
 ### Nginx
-Serving the static Gatsby pages.
+Serving the static Gatsby output.
 
 ### Node server
 * Express for routing/api.
 * Typescript is the language choice.
-* Send email using Gmail API.
+* Send email using Google Cloud API.
   - Sent when project are submitted and when volunteers sign up.
 * Slack integreation when new projects are proposed.
 
@@ -28,4 +28,4 @@ To store our project info.
 Where our current static pages are made.
 
 ### Kubernetes
-Hosting everything but Gatsby.
+Hosting everything.
