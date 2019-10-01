@@ -4,7 +4,7 @@ USER mvp
 WORKDIR /home/mvp/app
 
 # move resources to correct location
-COPY ./express-gen-ts /home/mvp/app
+COPY ./frontend /home/mvp/app
 
 # port set
 EXPOSE 3000
