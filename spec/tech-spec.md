@@ -38,10 +38,10 @@ Serving the static Gatsby output.
 * `/api/project/{id}` (PUT)
 
     Update an existing project.
-* `/api/projects` (GET)
+* `/api/project/{id}` (DELETE)
 
     Delete an existing project.
-* `/api/project/{id}` (DELETE)
+* `/api/projects` (GET)
 
     Return list of all projects.
 * `/api/volunteer` (POST)
