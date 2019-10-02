@@ -40,6 +40,9 @@ Serving the static Gatsby output.
     Update an existing project.
 * `/api/projects` (GET)
 
+    Delete an existing project.
+* `/api/project/{id}` (DELETE)
+
     Return list of all projects.
 * `/api/volunteer` (POST)
 
@@ -58,6 +61,7 @@ Table: Projects
     po_email: VARCHAR(256), NOT NULL
     description: VARCHAR(512), NOT NULL
     description_link: VARCHAR(2083)
+    status: SMALLINT, NOT NULL, CHECK (status >= 0)
 ```
 
 ### Gatsby
