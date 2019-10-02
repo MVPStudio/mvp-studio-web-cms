@@ -4,5 +4,6 @@ CREATE TABLE projects (
     org_url varchar(2083),  
     po_name varchar(128) NOT NULL,  
     description varchar(512) NOT NULL,  
-    description_link varchar(2083)
+    description_link varchar(2083),
+    status smallint NOT NULL CHECK (status >= 0)
 );
