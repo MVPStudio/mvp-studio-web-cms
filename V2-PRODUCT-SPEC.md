@@ -27,7 +27,7 @@ students get real experience for future internships and jobs.
 
 #### MVP Studio
 
-MVP Studio is primarily concerned with promoting a positive meeting space and being available for a project is ready to kick off.
+MVP Studio is primarily concerned with promoting a positive meeting space and being available for a project when it is ready to kick off.
 This means guarding against bad data on the website, and being available to non profits.
 
 ## User Workflows
@@ -42,6 +42,8 @@ This means guarding against bad data on the website, and being available to non 
     - Maybe there is a space to tell people if they want help writing their proposal they can come meet us on a Tuesday
     evening and we can help them.
     - It should encourage them to communicate with us via our slack room(s) in Eugene Tech (not email).
+    - Part of the process description is what needs to happen before a project kicks off, and how they can contact us to kick it off.
+    - There is also very clear contact info for MVP Studio for any questions during the process.
 - Click post a new project
 - Arrive at a form 
 - They can submit the following (* = optional)
@@ -56,7 +58,7 @@ This means guarding against bad data on the website, and being available to non 
     - The email contains a 'magic link' to a page where they can edit their posting
     - The posting has an expiration of 2 months after it was posted.
         - If it should be extended we can allow them to just re-post it
-- Once approved (see MVP Studio workflow below), the posting will be publicly visible
+- Once posted the posting will be immediately publicly visible
 
 ### Volunteers
 
@@ -96,15 +98,17 @@ expectations, what happens next, etc.... (copy tbd)
 **The primary workflow for MVP Studio is to change the status of a project**
 
 - A project can be in one of the following statuses
-    - pending
     - approved
     - started
     - finished
-- When a new project is submitted a 'magic link' is sent to team@mvpstudio.org
-    - the password in the magic link is different than the one sent to the stakeholder
-- Link goes to a page showing all the details of the new project.
-- There is a drop down to change the status.
-- when the status goes from pending to approved a congratulatory email is sent to the stakeholder.
+    - removed
+- When a new project is submitted
+    - the project is immediately in an approved status
+    - a 'magic link' is sent to team@mvpstudio.org
+        - the password in the magic link is different than the one sent to the stakeholder
+    - If MVP Studio wants to take down the project for any reason they can change it to a removed status.
+        - There is no automated email when this happens, if we want to reach out we will do it manually.
+    - A congratulatory email is sent to the stakeholder.
 - Only projects with an approved status are visible on the projects page for volunteers to sign up for
 - Future work could be
     - a page for in progress projects
