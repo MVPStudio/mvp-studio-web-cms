@@ -50,8 +50,8 @@ workflows:
   version: 2
   build-publish:
     jobs:
-      - build-static:
-      - build-api:
+      - build-static: {}
+      - build-api: {}
       - publish-static:
           context: dockerhub-publish
           requires:
