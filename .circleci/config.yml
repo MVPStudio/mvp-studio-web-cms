@@ -17,10 +17,10 @@ jobs:
       - image: circleci/python:3
     steps:
       - attach_workspace:
-          at: ./static
+          at: ./
       - setup_remote_docker:
           docker_layer_caching: true
-      - run: curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
+      - run: cd static/ && curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
 
   build-api:
     docker:
@@ -39,10 +39,10 @@ jobs:
       - image: circleci/python:3
     steps:
       - attach_workspace:
-          at: ./api
+          at: ./
       - setup_remote_docker:
           docker_layer_caching: true
-      - run: curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
+      - run: cd api/ && curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
 
 workflows:
   version: 2
