@@ -5,7 +5,7 @@ WORKDIR /home/mvp/app
 
 # move resources to correct location
 COPY ./dist ./
-COPY ./node_modules ./
+COPY ./node_modules ./node_modules
 
 # port set
 EXPOSE 8000
