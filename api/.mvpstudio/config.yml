@@ -1,0 +1,3 @@
+name: mvpstudio-web-api
+docker_context:
+  - ../

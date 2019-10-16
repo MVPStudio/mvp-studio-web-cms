@@ -41,7 +41,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "yarn install --frozen-lockfile && gatsby build && cd server && yarn install --frozen-lockfile",
+    "build": "yarn install --frozen-lockfile && gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",

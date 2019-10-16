@@ -1,16 +1,12 @@
 FROM mvpstudio/node:v10
 
-WORKDIR /home/mvp/app
-# mvp user needs to be able to install here
-RUN chown -R mvp:mvp /home/mvp/app
 USER mvp
+WORKDIR /home/mvp/app
 
 # move resources to correct location
-COPY ./express-gen-ts /home/mvp/app
-
-#install dependencies
-RUN npm install
+COPY ./dist ./
+COPY ./node_modules ./node_modules
 
 # port set
-EXPOSE 3000
-ENTRYPOINT ["npm", "run", "start-dev"]
+EXPOSE 8000
+ENTRYPOINT ["node", "start.js"]

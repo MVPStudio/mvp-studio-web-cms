@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "lint": "tslint --project \"tsconfig.json\"",
-    "start": "rm -rf ./dist && tsc --build tsconfig.prod.json && cross-env ENV_FILE=production node -r ./env ./dist/start.js",
-    "dev": "rm -rf ./dist && tsc --build tsconfig.json && cross-env ENV-FILE=development node -r ./env ./dist/start.js"
+    "compile": "rm -rf ./dist && tsc --build tsconfig.json",
+    "dev": "yarn compile && cross-env ENV-FILE=development node -r ./env ./dist/start.js",
+    "build": "yarn install --frozen-lockfile && yarn lint && yarn compile"
   },
   "dependencies": {
     "cross-env": "^6.0.2",
     "dotenv": "^8.1.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
