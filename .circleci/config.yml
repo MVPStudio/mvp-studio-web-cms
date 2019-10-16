@@ -5,8 +5,7 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout
-      - run: cd static/
-      - run: yarn build
+      - run: cd static/ && yarn build
       - persist_to_workspace:
           root: ./static
           # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
@@ -28,8 +27,7 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout
-      - run: cd api/
-      - run: yarn build
+      - run: cd api/ && yarn build
       - persist_to_workspace:
           root: ./api
           # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
