@@ -11,6 +11,7 @@ jobs:
           # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
           paths:
             - static
+            - .git
 
   publish-static:
     docker:
@@ -33,6 +34,7 @@ jobs:
           # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
           paths:
             - api
+            - .git
 
   publish-api:
     docker:
