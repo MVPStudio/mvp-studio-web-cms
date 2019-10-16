@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: cd static/ && yarn build
       - persist_to_workspace:
-          root: ./static
+          root: ./
           # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
           paths:
             - static
@@ -29,7 +29,7 @@ jobs:
       - checkout
       - run: cd api/ && yarn build
       - persist_to_workspace:
-          root: ./api
+          root: ./
           # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
           paths:
             - api
