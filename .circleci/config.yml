@@ -1,28 +1,47 @@
 version: 2
 jobs:
-  build:
+  build-static:
     docker:
       - image: circleci/node:10
     steps:
       - checkout
+      - run: cd static/
       - run: yarn build
       - persist_to_workspace:
-          root: ./
+          root: ./static
           # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
           paths:
-            - public
-            - config
-            - server
-            - .mvpstudio
-            - Dockerfile
-            - .git
+            - static
 
-  publish:
+  publish-static:
     docker:
       - image: circleci/python:3
     steps:
       - attach_workspace:
-          at: ./
+          at: ./static
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
+
+  build-api:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run: cd api/
+      - run: yarn build
+      - persist_to_workspace:
+          root: ./api
+          # must include anything needed by the Dockerfile, mvpstudio.yml, .git, and kube folder
+          paths:
+            - api
+
+  publish-api:
+    docker:
+      - image: circleci/python:3
+    steps:
+      - attach_workspace:
+          at: ./api
       - setup_remote_docker:
           docker_layer_caching: true
       - run: curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
@@ -31,12 +50,19 @@ workflows:
   version: 2
   build-publish:
     jobs:
-      - build:
-          context: web-cms
-      - publish:
+      - build-static:
+      - build-api:
+      - publish-static:
           context: dockerhub-publish
           requires:
-            - build
+            - build-static
+          filters:
+            branches:
+              only: master
+      - publish-api:
+          context: dockerhub-publish
+          requires:
+            - build-api
           filters:
             branches:
               only: master
