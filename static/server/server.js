@@ -20,7 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   next();
 // });
 
-app.patch('/api/airtable', (req, res, next) => {
+// Todo send to proper api route
+app.patch('/api/form', (req, res, next) => {
   formHandler(req.body)
     .then(response => res.send(response))
     .catch(e => next(e));
