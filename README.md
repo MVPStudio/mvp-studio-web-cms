@@ -18,15 +18,6 @@ yarn install
 yarn start
 ```
 
-1. Airtable setup
-When Gatsby builds, it uses graphql to get all of its data from our airtable.
-You will need to be added to the airtable, and then make a copy of the sample.env
-  ```
-  $> cp sample.env .env
-  ```
-  replace `YOUR_API_KEY` with your api key: `GATSBY_AIRTABLE_API_KEY=YOUR_API_KEY`
-    - [How to generate your api key](https://support.airtable.com/hc/en-us/articles/219046777-How-do-I-get-my-API-key-)
-
 ## CI
 
 The server and client are built into a [docker container](https://github.com/MVPStudio/mvp-studio-web-cms/blob/master/Dockerfile).
