@@ -5,7 +5,7 @@ export const formSubmit = async (
   setSubmitResponse,
 ) => {
   const response = await (await fetch(
-    '/api/airtable', // path to api proxy
+    '/api/form', // TODO: Fetch from proper API route
     {
       method: 'PATCH',
       headers: {
