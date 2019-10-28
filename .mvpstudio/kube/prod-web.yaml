@@ -46,16 +46,6 @@ spec:
           env:
             - name: NODE_ENV
               value: production
-            - name: GATSBY_AIRTABLE_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: mvpstudio-web-airtable
-                  key: api-key
-            - name: AIRTABLE_BASE_ID
-              valueFrom:
-                secretKeyRef:
-                  name: mvpstudio-web-airtable
-                  key: base-id
             - name: RECAPTCHA_SECRET
               valueFrom:
                 secretKeyRef:
