@@ -17,7 +17,7 @@ const IndustryProFormContainer = ({ setFormState, setSubmitResponse }) => {
   ];
 
   const initialValues = {
-    formName: 'Industry_Professional_Form', // Must be same as airtable base name
+    formName: 'Industry_Professional_Form',
     Name: '',
     Email: '',
     Github: '',

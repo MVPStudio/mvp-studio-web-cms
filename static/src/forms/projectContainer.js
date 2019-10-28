@@ -6,7 +6,7 @@ import { formSubmit } from '../utilities';
 
 const ProjectContainer = ({ setFormState, setSubmitResponse }) => {
   const initialValues = {
-    formName: 'Project_Onboarding_Form', // Must be same as airtable base name
+    formName: 'Project_Onboarding_Form',
     Name_of_project: '',
     Email: '',
     Short_description: '',

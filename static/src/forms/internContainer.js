@@ -6,7 +6,7 @@ import { formSubmit } from '../utilities';
 
 const InternContainer = ({ setFormState, setSubmitResponse }) => {
   const initialValues = {
-    formName: 'Intern_Form', // Must be same as airtable base name
+    formName: 'Intern_Form',
     Name: '',
     Email: '',
     Github: '',
