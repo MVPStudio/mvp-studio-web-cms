@@ -25,29 +25,6 @@ module.exports = {
         path: `${__dirname}/src/markdown`,
       },
     },
-    {
-      resolve: `gatsby-source-airtable`,
-      options: {
-        apiKey: process.env.GATSBY_AIRTABLE_API_KEY,
-        tables: [
-          {
-            baseId: `appqzdNgU137oV8B3`, // found in api docs, check the 'show api' button, and is the number '...base('YOUR_BASE ID')
-            tableName: `Showcase`,
-            // tableView: `YOUR_TABLE_VIEW_NAME`,  // optional
-            // queryName: `OPTIONAL_NAME_TO_IDENTIFY_TABLE`, // optional
-            mapping: { ScreenShot: `fileNode` }, // optional, e.g. "text/markdown", "fileNode"
-            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`] // optional, for deep linking to records across tables.
-          },
-          {
-            baseId: `appqzdNgU137oV8B3`,
-            tableName: `Team`,
-            mapping: { Avatar: `fileNode` }, // optional, e.g. "text/markdown", "fileNode"
-            // tableView: `YOUR_TABLE_VIEW_NAME` // optional
-            // can leave off queryName, mapping or tableLinks if not needed
-          },
-        ],
-      },
-    },
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
