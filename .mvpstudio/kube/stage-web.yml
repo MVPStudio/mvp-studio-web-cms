@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: api-server
-        image: mvpstudio/mvpstudio-web-api
+        image: mvpstudio/mvpstudio-web-api:2a98aae
         resources:
            limits:
               cpu: 0.25
