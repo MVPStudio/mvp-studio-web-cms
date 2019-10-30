@@ -20,7 +20,8 @@ jobs:
       - attach_workspace:
           at: ./
       - setup_remote_docker:
-          docker_layer_caching: true
+          # not supported on the free plan anymore
+          docker_layer_caching: false
       - run: cd static/ && curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
 
   build-api:
@@ -43,7 +44,8 @@ jobs:
       - attach_workspace:
           at: ./
       - setup_remote_docker:
-          docker_layer_caching: true
+          # not supported on the free plan anymore
+          docker_layer_caching: false
       - run: cd api/ && curl https://raw.githubusercontent.com/MVPStudio/build_setup/master/build_tag_push.sh | bash
 
 workflows:
