@@ -1,0 +1,75 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvpstudio-web-api
+  namespace: stage-mvpstudio-web
+  labels:
+    app: mvpstudio-web-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mvpstudio-web-api
+  template:
+    metadata:
+      labels:
+        app: mvpstudio-web-api
+    spec:
+      containers:
+      - name: api-server
+        image: mvpstudio/mvpstudio-web-api
+        resources:
+           limits:
+              cpu: 0.25
+              memory: 250Mi
+           requests:
+              cpu: 0.25
+              memory: 250Mi
+        ports:
+        - containerPort: 8000
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvpstudio-web-api
+
+  namespace: stage-mvpstudio-web
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind: Mapping
+      name: stage-mvpstudio-web-api-mapping
+      host: mvpstudio.stage.apps.mvpstudio.org
+      prefix: /api
+      rewrite: /api
+      service: mvpstudio-web-api.stage-mvpstudio-web
+      ---
+      apiVersion: ambassador/v0
+      kind: Mapping
+      name: stage-mvpstudio-web-api-www-mapping
+      host: www.mvpstudio.stage.apps.mvpstudio.org
+      prefix: /api
+      rewrite: /api
+      service: mvpstudio-web-api.stage-mvpstudio-web
+      ---
+      apiVersion: ambassador/v0
+      kind: TLSContext
+      name: stage-mvpstudio-web-api-tls
+      hosts:
+      - mvpstudio.stage.apps.mvpstudio.org
+      - www.mvpstudio.stage.apps.mvpstudio.org
+      secret: stage-apps-cert
+spec:
+  selector:
+     app: mvpstudio-web-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
