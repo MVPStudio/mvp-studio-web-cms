@@ -45,25 +45,27 @@ metadata:
       ---
       apiVersion: ambassador/v0
       kind: Mapping
-      name: mvpstudio-web-api-mapping
-      host: mvpstudio.org
-      prefix: /
+      name: stage-mvpstudio-web-api-mapping
+      host: mvpstudio.stage.apps.mvpstudio.org
+      prefix: /api
+      rewrite: /api
       service: mvpstudio-web-api.stage-mvpstudio-web
       ---
       apiVersion: ambassador/v0
       kind: Mapping
-      name: mvpstudio-web-api-www-mapping
-      host: www.mvpstudio.org
-      prefix: /
+      name: stage-mvpstudio-web-api-www-mapping
+      host: www.mvpstudio.stage.apps.mvpstudio.org
+      prefix: /api
+      rewrite: /api
       service: mvpstudio-web-api.stage-mvpstudio-web
       ---
       apiVersion: ambassador/v0
       kind: TLSContext
-      name: mvpstudio-web-api-tls
+      name: stage-mvpstudio-web-api-tls
       hosts:
-      - mvpstudio.org
-      - www.mvpstudio.org
-      secret: mvpstudio-www-certification
+      - mvpstudio.stage.apps.mvpstudio.org
+      - www.mvpstudio.stage.apps.mvpstudio.org
+      secret: stage-apps-cert
 spec:
   selector:
      app: mvpstudio-web-api
