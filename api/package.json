@@ -1,5 +1,5 @@
 {
-  "name": "express-gen-ts",
+  "name": "api",
   "version": "0.0.0",
   "scripts": {
     "lint": "tslint --project \"tsconfig.json\"",
