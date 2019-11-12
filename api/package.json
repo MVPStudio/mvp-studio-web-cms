@@ -4,11 +4,10 @@
   "scripts": {
     "lint": "tslint --project \"tsconfig.json\"",
     "compile": "rm -rf ./dist && tsc --build tsconfig.json",
-    "dev": "yarn compile && node ./dist/start.js",
+    "dev": "yarn compile && node -r dotenv/config ./dist/start.js",
     "build": "yarn install --frozen-lockfile && yarn lint && yarn compile"
   },
   "dependencies": {
-    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "knex": "^0.20.1",
     "pg": "^7.12.1",
@@ -18,6 +17,7 @@
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.17.1",
     "@types/node": "^12.7.8",
+    "dotenv": "^8.1.0",
     "ts-node": "^8.4.1",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
