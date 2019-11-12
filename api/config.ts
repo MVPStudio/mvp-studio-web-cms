@@ -35,5 +35,9 @@ export const config = {
             password: getEnvString('DATABASE_PASSWORD'),
             database: getEnvString('DATABASE_NAME'),
         },
+        migrations: {
+            directory: './src/database/migrations',
+            tableName: 'migrations',
+        },
     },
 };
