@@ -1,3 +1,4 @@
+import { join } from 'path';
 const getEnvString = (name: string, defaultValue?: string): string => {
     const value = process.env[name];
     /* Will catch empty strings, null, and undefined */
@@ -36,7 +37,7 @@ export const config = {
             database: getEnvString('DATABASE_NAME'),
         },
         migrations: {
-            directory: './src/database/migrations',
+            directory: join(__dirname, 'src', 'database', 'migrations'),
             tableName: 'migrations',
         },
     },
