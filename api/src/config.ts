@@ -1,10 +1,10 @@
-const getEnvString = (name: string, defaultValue: string): string => {
+const getEnvString = (name: string, defaultValue?: string): string => {
     let value = '';
     try {
-        if (!(process.env[name]) && defaultValue === '') {
+        if (!(process.env[name]) && (defaultValue === undefined || defaultValue === '')) {
             throw new Error('Environment variable is undefined');
         } else if (!(process.env[name])) {
-            value = defaultValue;
+            value = defaultValue as string;
         } else {
             value = process.env[name] as string;
         }
@@ -14,8 +14,8 @@ const getEnvString = (name: string, defaultValue: string): string => {
     }
     return value;
 };
-const getEnvNumber = (name: string, defaultValue: string): number => parseInt(getEnvString(name, defaultValue), 10);
-const getEnvBoolean = (name: string, defaultValue: string): boolean => {
+const getEnvNumber = (name: string, defaultValue?: string): number => parseInt(getEnvString(name, defaultValue), 10);
+const getEnvBoolean = (name: string, defaultValue?: string): boolean => {
     if (getEnvString(name, defaultValue) === 'true' || getEnvString(name, defaultValue) === 'True') {
         return true;
     }
@@ -27,10 +27,10 @@ export const config = {
     database: {
         client: 'pg',
         connection: {
-            host: getEnvString('DATABASE_HOST', 'localhost'),
-            user: getEnvString('DATABASE_USER', 'postgres'),
-            password: getEnvString('DATABASE_PASSWORD', 'password'),
-            database: getEnvString('DATABASE_NAME', 'db'),
+            host: getEnvString('DATABASE_HOST'),
+            user: getEnvString('DATABASE_USER'),
+            password: getEnvString('DATABASE_PASSWORD'),
+            database: getEnvString('DATABASE_NAME'),
         },
     },
 };
