@@ -15,7 +15,12 @@ const getEnvString = (name: string, defaultValue: string): string => {
     return value;
 }
 const getEnvNumber = (name: string, defaultValue: string): number => parseInt(getEnvString(name, defaultValue), 10);
-const getEnvBoolean = (name: string, defaultValue: string): boolean => getEnvString(name, defaultValue) === 'true';
+const getEnvBoolean = (name: string, defaultValue: string): boolean => {
+    if(getEnvString(name, defaultValue) === 'true' || getEnvString(name, defaultValue) === 'True') {
+        return true;
+    }
+    return false;
+}
 
 export const config = {
     serverPort: getEnvNumber('SERVER_PORT', '8000'),
