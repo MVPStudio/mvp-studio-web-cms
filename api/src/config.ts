@@ -1,26 +1,26 @@
 const getEnvString = (name: string, defaultValue: string): string => {
     let value = '';
     try {
-        if(!(process.env[name]) && defaultValue === '') {
+        if (!(process.env[name]) && defaultValue === '') {
             throw new Error('Environment variable is undefined');
-        } else if(!(process.env[name])) {
+        } else if (!(process.env[name])) {
             value = defaultValue;
         } else {
-            value = <string> process.env[name];
+            value = process.env[name] as string;
         }
-    }
-    catch(e) {
-        console.log(e);
+    } catch (e) {
+        // tslint:disable-next-line no-console
+        console.error(e);
     }
     return value;
-}
+};
 const getEnvNumber = (name: string, defaultValue: string): number => parseInt(getEnvString(name, defaultValue), 10);
 const getEnvBoolean = (name: string, defaultValue: string): boolean => {
-    if(getEnvString(name, defaultValue) === 'true' || getEnvString(name, defaultValue) === 'True') {
+    if (getEnvString(name, defaultValue) === 'true' || getEnvString(name, defaultValue) === 'True') {
         return true;
     }
     return false;
-}
+};
 
 export const config = {
     serverPort: getEnvNumber('SERVER_PORT', '8000'),
