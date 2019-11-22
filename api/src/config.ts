@@ -1,16 +1,14 @@
 const getEnvString = (name: string, defaultValue?: string): string => {
     let value = '';
-    try {
-        if (!(process.env[name]) && (defaultValue === undefined || defaultValue === '')) {
-            throw new Error('Environment variable is undefined');
-        } else if (!(process.env[name])) {
-            value = defaultValue as string;
-        } else {
-            value = process.env[name] as string;
-        }
-    } catch (e) {
+    if (!(process.env[name]) && (defaultValue === undefined || defaultValue === '')) {
+        const msg = `Error getting environment variable ${name}.`;
         // tslint:disable-next-line no-console
-        console.error(e);
+        console.error(msg);
+        throw new Error(msg);
+    } else if (!(process.env[name])) {
+        value = defaultValue as string;
+    } else {
+        value = process.env[name] as string;
     }
     return value;
 };
@@ -27,7 +25,7 @@ export const config = {
     database: {
         client: 'pg',
         connection: {
-            host: getEnvString('DATABASE_HOST'),
+            host: getEnvString('DATABASE_HOST', 'localhost'),
             user: getEnvString('DATABASE_USER'),
             password: getEnvString('DATABASE_PASSWORD'),
             database: getEnvString('DATABASE_NAME'),
