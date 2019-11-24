@@ -1,4 +1,4 @@
-import { logger } from '../../logger';
+import { logger } from '../../config/logger';
 import { destroyClientAndExit, setupConnectionConfig, setupDbClient } from './setupClient';
 
 export const dropDatabase = async () => {

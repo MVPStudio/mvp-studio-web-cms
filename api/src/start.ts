@@ -1,8 +1,8 @@
 import app from './Server';
-import { config } from '../config';
+import { config } from '../config/config';
 import { getDbClientInstance } from './database/dbClient';
 import { createDatabase } from './database/createDatabase';
-import { childLogger } from '../logger';
+import { childLogger } from '../config/logger';
 const logger = childLogger('start');
 
 export const runServer = async () => {

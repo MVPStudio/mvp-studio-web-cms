@@ -37,7 +37,7 @@ export const config = {
             database: getEnvString('DATABASE_NAME'),
         },
         migrations: {
-            directory: join(__dirname, 'src', 'database', 'migrations'),
+            directory: join(__dirname, '../', 'src', 'database', 'migrations'),
             tableName: 'migrations',
         },
     },
