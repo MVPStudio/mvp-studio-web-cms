@@ -13,7 +13,8 @@ export const runServer = async () => {
     const dbClient = getDbClientInstance();
     logger.info(`Migrating database ${config.database.connection.database}.`);
     await dbClient.migrate.latest();
-    logger.info(`Migrated to version ${await dbClient.migrate.currentVersion()}.`);
+    const currentVersion: string = await dbClient.migrate.currentVersion();
+    logger.info(`Migrated to version ${currentVersion}.`);
 
     // Start the server
     const port = config.serverPort;
