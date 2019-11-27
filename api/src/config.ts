@@ -1,17 +1,15 @@
 const getEnvString = (name: string, defaultValue?: string): string => {
-    let value = '';
-    if (!(process.env[name]) && (defaultValue === undefined || defaultValue === '')) {
-        const msg = `Could not get environment variable ${name}.`;
-        // tslint:disable-next-line no-console
-        console.error(msg);
-        throw new Error(msg);
-    } else if (!(process.env[name])) {
-        value = defaultValue as string;
+    const value = process.env[name];
+    if (value == null) {
+        if (defaultValue != null) {
+            return defaultValue;
+        }
     } else {
-        value = process.env[name] as string;
+        return value;
     }
-    return value;
+    throw Error(`Required environment variable ${name} missing!`);
 };
+
 const getEnvNumber = (name: string, defaultValue?: string): number => parseInt(getEnvString(name, defaultValue), 10);
 const getEnvBoolean = (name: string, defaultValue?: string): boolean => {
     if (getEnvString(name, defaultValue).toLowerCase() === 'true') {
