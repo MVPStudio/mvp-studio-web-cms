@@ -12,8 +12,11 @@ export const runServer = async () => {
 
     // Start the server
     const port = config.serverPort;
-    app.listen(port, () => {
-        logger.info('Express server started on port: ' + port);
+    await new Promise((resolve) => {
+        app.listen(port, () => {
+            logger.info('Express server started on port: ' + port);
+            resolve();
+        });
     });
 };
 
