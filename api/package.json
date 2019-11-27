@@ -6,7 +6,8 @@
     "compile": "rm -rf ./dist && tsc --build tsconfig.json",
     "dev": "yarn compile && node -r dotenv/config ./dist/src/start.js",
     "build": "yarn install --frozen-lockfile && yarn lint && yarn compile",
-    "create-migration": "knex migrate:make"
+    "create-migration": "knex migrate:make",
+    "create-seed": "knex seed:make"
   },
   "dependencies": {
     "express": "^4.17.1",
