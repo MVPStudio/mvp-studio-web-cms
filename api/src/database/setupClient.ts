@@ -1,4 +1,4 @@
-import { config } from '../../config/config';
+import { config } from '../config/config';
 import Knex from 'knex';
 import { ConnectionConfig } from 'knex';
 

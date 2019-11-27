@@ -20,6 +20,6 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "config/*.ts", "src/database/migrations/*.ts",
+    "src/**/*.ts", "knexfile.ts",
   ],
 }
