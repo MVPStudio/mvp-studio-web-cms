@@ -1,7 +1,8 @@
 import app from './Server';
+import { config } from './config';
 
 // Start the server
-const port = Number(process.env.PORT || 8000);
+const port = config.serverPort;
 app.listen(port, () => {
     // tslint:disable-next-line no-console
     console.info('Express server started on port: ' + port);
