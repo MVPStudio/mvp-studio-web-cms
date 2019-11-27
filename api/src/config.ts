@@ -1,7 +1,8 @@
 const getEnvString = (name: string, defaultValue?: string): string => {
     const value = process.env[name];
-    if (value == null) {
-        if (defaultValue != null) {
+    /* Will catch empty strings, null, and undefined */
+    if (!value) {
+        if (defaultValue) {
             return defaultValue;
         }
     } else {
