@@ -1,5 +1,5 @@
 import Knex from 'knex';
-import { config } from '../config';
+import { config } from '../config/config';
 
 let _instance: Knex;
 
