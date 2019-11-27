@@ -1,8 +1,9 @@
 import app from './Server';
 import { config } from './config';
-import { logger } from './logger';
 import { getDbClientInstance } from './database/dbClient';
 import { createDatabase } from './database/createDatabase';
+import { childLogger } from './logger';
+const logger = childLogger('start');
 
 export const runServer = async () => {
     // Create database
