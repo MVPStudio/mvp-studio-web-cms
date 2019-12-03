@@ -7,7 +7,8 @@
     "dev": "yarn compile && node -r dotenv/config ./dist/src/start.js",
     "build": "yarn install --frozen-lockfile && yarn lint && yarn compile",
     "create-migration": "knex migrate:make",
-    "create-seed": "knex seed:make"
+    "create-seed": "knex seed:make",
+    "run-seed": "knex seed:run"
   },
   "dependencies": {
     "express": "^4.17.1",

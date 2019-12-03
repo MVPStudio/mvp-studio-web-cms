@@ -1,5 +1,5 @@
 /* Load in env vars that config needs */
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 dotenv.config();
 import { config } from './src/config/config';
 
