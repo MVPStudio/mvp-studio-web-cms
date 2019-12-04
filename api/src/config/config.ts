@@ -40,5 +40,8 @@ export const config = {
             directory: join(__dirname, '..', 'database', 'migrations'),
             tableName: 'migrations',
         },
+        seeds: {
+            directory: join(__dirname, '..', 'database', 'seeds'),
+        },
     },
 };

@@ -6,7 +6,9 @@
     "compile": "rm -rf ./dist && tsc --build tsconfig.json",
     "dev": "yarn compile && node -r dotenv/config ./dist/src/start.js",
     "build": "yarn install --frozen-lockfile && yarn lint && yarn compile",
-    "create-migration": "knex migrate:make"
+    "create-migration": "knex migrate:make",
+    "create-seed": "knex seed:make",
+    "run-seed": "knex seed:run"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -17,8 +19,10 @@
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.17.1",
+    "@types/faker": "^4.1.8",
     "@types/node": "^12.7.8",
     "dotenv": "^8.1.0",
+    "faker": "^4.1.0",
     "ts-node": "^8.4.1",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
