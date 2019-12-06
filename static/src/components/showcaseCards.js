@@ -1,8 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
-
-import useShowcase from '../hooks/useShowcase';
 
 const ShowcaseCard = styled.div`
   margin: 0.5rem auto;
@@ -21,33 +18,35 @@ const ShowcaseCard = styled.div`
   }
 `;
 
-const ShowcaseCards = () => {
-  const showcaseCards = useShowcase('all').map(
-    ({
-      node: {
-        data: { Name, Description, URL, ScreenShot, TeamMembers },
-      },
-    }) => (
-      <ShowcaseCard key={Name}>
-        <Img
-          className="screenshot"
-          fixed={ScreenShot.localFiles[0].childImageSharp.fixed}
-          style={{ margin: '0 auto' }}
-        />
+const getShowcaseCard = ({project_name,org_url,po_name,description,description_link}) => (
+  <ShowcaseCard key={project_name}>
         <div>
-          <a href={URL}>
-            <h2>{Name}</h2>
+          <a href={org_url}>
+            <h2>{project_name}</h2>
           </a>
           <ul>
-            <li>Description: {Description}</li>
-            <li>Team Members: {TeamMembers}</li>
-            <li>Link: {URL}</li>
+            <li>Description: {description}</li>
+            <li>Team Members: {po_name}</li>
+            <li>Link: {description_link}</li>
           </ul>
         </div>
       </ShowcaseCard>
-    ),
-  );
-  return <div>{showcaseCards}</div>;
+)
+
+const ShowcaseCards = () => {
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('http://localhost/api/projects');
+      setProjects(await response.json());
+    }
+    fetchData();
+  }, [])
+  return (
+    <div>
+      {projects.map(getShowcaseCard)}
+    </div>
+  )
 };
 
 export default ShowcaseCards;
