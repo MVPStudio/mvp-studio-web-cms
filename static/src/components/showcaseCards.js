@@ -37,7 +37,7 @@ const ShowcaseCards = () => {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost/api/projects');
+      const response = await fetch('/api/projects');
       setProjects(await response.json());
     }
     fetchData();
