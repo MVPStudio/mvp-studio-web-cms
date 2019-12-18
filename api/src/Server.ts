@@ -1,11 +1,11 @@
 import express from 'express';
 import { Request, Response } from 'express';
 import { getDbClientInstance } from './database/dbClient';
-import dao from './database/dao';
+import ProjectService from './projects/ProjectService';
 
 // Init express
 const app = express();
-const dbClient = getDbClientInstance();
+const service = new ProjectService();
 // Add middleware/settings/routes to express.
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -31,7 +31,7 @@ app.delete('/api/project/:projectID', (req: Request, res: Response) => {
 });
 
 app.get('/api/projects', (req: Request, res: Response) => {
-    dao.getAllProjects(dbClient).then((data) => res.json(data));
+    service.getAllProjects().then((data) => res.json(data));
 });
 
 app.post('/api/volunteer', (req: Request, res: Response) => {
