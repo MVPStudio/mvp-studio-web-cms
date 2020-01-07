@@ -32,6 +32,7 @@ export const config = {
         client: 'pg',
         connection: {
             host: getEnvString('DATABASE_HOST', 'localhost'),
+            port: getEnvNumber('DATABASE_PORT', '5432'),
             user: getEnvString('DATABASE_USER'),
             password: getEnvString('DATABASE_PASSWORD'),
             database: getEnvString('DATABASE_NAME'),
