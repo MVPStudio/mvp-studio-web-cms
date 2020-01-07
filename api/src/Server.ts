@@ -2,10 +2,11 @@ import express from 'express';
 import { Request, Response } from 'express';
 import { getDbClientInstance } from './database/dbClient';
 import ProjectService from './projects/ProjectService';
+import ProjectDao from './projects/ProjectDao';
 
 // Init express
 const app = express();
-const service = new ProjectService();
+const service = new ProjectService(new ProjectDao(getDbClientInstance()));
 // Add middleware/settings/routes to express.
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
