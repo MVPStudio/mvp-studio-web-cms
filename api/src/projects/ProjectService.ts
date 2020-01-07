@@ -5,4 +5,7 @@ export default class ProjectService {
     public async getAllProjects() {
       return this.dao.getAllProjects();
     }
+    public async getProject(id: string) {
+      return this.dao.getProject(id);
+    }
   }
