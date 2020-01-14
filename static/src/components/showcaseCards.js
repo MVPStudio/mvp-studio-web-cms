@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const ShowcaseCard = styled.div`
@@ -18,12 +19,12 @@ const ShowcaseCard = styled.div`
   }
 `;
 
-const getShowcaseCard = ({project_name,org_url,po_name,description,description_link}) => (
+const getShowcaseCard = ({project_name,id,po_name,description,description_link}) => (
   <ShowcaseCard key={project_name}>
         <div>
-          <a href={org_url}>
+          <Link to={`/project/${id}`}>
             <h2>{project_name}</h2>
-          </a>
+          </Link>
           <ul>
             <li>Description: {description}</li>
             <li>Team Members: {po_name}</li>
