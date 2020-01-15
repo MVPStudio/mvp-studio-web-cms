@@ -8,7 +8,10 @@ module.exports = {
     siteUrl: 'https://mvpstudio.org',
   },
   pathPrefix: '/mvp-studio-web-cms',
-
+  proxy: {
+    prefix: "/api",
+    url: "http://localhost:3000",
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
