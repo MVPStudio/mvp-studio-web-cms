@@ -5,14 +5,10 @@ import { Line } from '../utilities';
 import ProjectDetails from '../components/projectCard';
 import FormSubmitAnimation from '../forms/formSubmitAnimation';
 import VolunteerFormContainer from '../forms/VolunteerFormContainer';
+import {AnimationWrapper, HomeCard} from '../components/GearButtons';
+import GearHammer from '../images/gearHammer.svg';
 
-const Project = () => (
-  <Layout>
-    <Router>
-      <ProjectDetails path="/project/:projectID" />
-    </Router>
-    <Line />
-    <h2 style={{ textAlign: 'center' }}>Get Involved!</h2>
+const renderForm = () => (
     <FormSubmitAnimation>
       {({ setFormState, setSubmitResponse }) => (
         <VolunteerFormContainer
@@ -21,6 +17,24 @@ const Project = () => (
         />
       )}
     </FormSubmitAnimation>
+);
+
+const InvolvedGear = () => (
+  <HomeCard>
+    <AnimationWrapper >
+      <GearHammer className="gearsvg,gear"/>
+      <h3>Get Involved!</h3>
+    </AnimationWrapper>
+  </HomeCard>
+);
+
+const Project = () => (
+  <Layout>
+    <Router>
+      <ProjectDetails path="/project/:projectID"/>
+    </Router>
+    <Line />
+    <InvolvedGear />
   </Layout>
 );
 

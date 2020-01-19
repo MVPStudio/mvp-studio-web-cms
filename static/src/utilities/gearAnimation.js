@@ -19,7 +19,7 @@ export const gearAnimation = css`
     animation-play-state: paused;
     fill: white;
   }
-  :hover .gear {
+  :hover .gear, :hover h3{
     animation-play-state: running;
     fill: ${red};
   }

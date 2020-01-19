@@ -9,8 +9,9 @@ import GearNut from '../images/gearNut.svg';
 import GearScrew from '../images/gearScrew.svg';
 import { gearAnimation, elevation, Line } from '../utilities';
 
-const AnimationWrapper = styled.div`
+export const AnimationWrapper = styled.div`
   margin: 1rem auto;
+  ${gearAnimation};
   text-align: center;
   display: grid;
   grid-template-rows: auto auto;
@@ -22,16 +23,19 @@ const AnimationWrapper = styled.div`
     display: block;
     fill: white;
   }
-  a {
+  a,.gearsvg {
     ${gearAnimation};
   }
   h3 {
     ${gearAnimation};
     margin: 0;
     font-size: 1.6rem;
+    color: rgb(232,90,52);
+    text-decoration: underline;
+    cursor: pointer;
   }
 `;
-const HomeCard = styled.div`
+export const HomeCard = styled.div`
   margin: 1rem auto;
   padding: 1rem;
   text-align: center;
