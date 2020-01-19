@@ -23,14 +23,15 @@ export const AnimationWrapper = styled.div`
     display: block;
     fill: white;
   }
-  a,.gearsvg {
+  a,
+  .gearsvg {
     ${gearAnimation};
   }
   h3 {
     ${gearAnimation};
     margin: 0;
     font-size: 1.6rem;
-    color: rgb(232,90,52);
+    color: rgb(232, 90, 52);
     text-decoration: underline;
     cursor: pointer;
   }
