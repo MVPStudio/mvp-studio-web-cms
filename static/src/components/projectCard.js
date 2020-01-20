@@ -26,8 +26,7 @@ const getProjectCard = ({project_name, org_url, po_name, description, descriptio
       <h2>{project_name}</h2>
       <Line />
       <ul>
-        <li>Description: {description}</li>
-        <Link to={description_link}><p>Click here for a more detailed description.</p></Link>
+        <li>Description: {description} <a href={description_link}>Click here for a more detailed description.</a></li>
         <li>Team Members: {po_name}</li>
         <li>Link: {org_url}</li>
       </ul>
