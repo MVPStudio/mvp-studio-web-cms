@@ -40,9 +40,7 @@ const VolunteerFormContainer = ({ setFormState, setSubmitResponse }) => {
       initialValues={initialValues}
       validationSchema // currently validated with HTML
       onSubmit={async (values, actions) => {
-        console.log(`values = ${values}`)
-        console.log(`actions = ${actions}`)
-        // formSubmit(values, actions, setFormState, setSubmitResponse);
+        formSubmit(values, actions, setFormState, setSubmitResponse);
       }}
       render={props => (
         <VolunteerForm

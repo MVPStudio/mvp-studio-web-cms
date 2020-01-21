@@ -4,20 +4,26 @@ export const formSubmit = async (
   setFormState,
   setSubmitResponse,
 ) => {
-  const response = await (await fetch(
-    '/api/airtable', // path to api proxy
-    {
-      method: 'PATCH',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    },
-  )).json();
-  if (response.statusCode === 200) {
-    actions.resetForm();
+  let response;
+  if (values.formName === 'Volunteer_Form') {
+    console.log(JSON.stringify(values));
+    // response = await (await fetch(
+    //   '/api/volunteer',
+    //   {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-type': 'application/json',
+    //     },
+    //     body: JSON.stringify(values),
+    //   },
+    // )).json();
   }
+  // if (response.statusCode === 200) {
+  //   actions.resetForm();
+  // }
+  actions.resetForm();
   setFormState(true);
-  setSubmitResponse(response.message);
+  // setSubmitResponse(response.message);
+  setSubmitResponse("Thanks")
   actions.setSubmitting(false);
 };
