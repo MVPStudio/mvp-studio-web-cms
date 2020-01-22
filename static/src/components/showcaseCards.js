@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
@@ -19,20 +19,26 @@ const ShowcaseCard = styled.div`
   }
 `;
 
-const getShowcaseCard = ({project_name,id,po_name,description,description_link}) => (
+const getShowcaseCard = ({
+  project_name,
+  id,
+  po_name,
+  description,
+  description_link,
+}) => (
   <ShowcaseCard key={project_name}>
-        <div>
-          <Link to={`/project/${id}`}>
-            <h2>{project_name}</h2>
-          </Link>
-          <ul>
-            <li>Description: {description}</li>
-            <li>Team Members: {po_name}</li>
-            <li>Link: {description_link}</li>
-          </ul>
-        </div>
-      </ShowcaseCard>
-)
+    <div>
+      <Link to={`/project/${id}`}>
+        <h2>{project_name}</h2>
+      </Link>
+      <ul>
+        <li>Description: {description}</li>
+        <li>Team Members: {po_name}</li>
+        <li>Link: {description_link}</li>
+      </ul>
+    </div>
+  </ShowcaseCard>
+);
 
 const ShowcaseCards = () => {
   const [projects, setProjects] = useState([]);
@@ -42,12 +48,8 @@ const ShowcaseCards = () => {
       setProjects(await response.json());
     }
     fetchData();
-  }, [])
-  return (
-    <div>
-      {projects.map(getShowcaseCard)}
-    </div>
-  )
+  }, []);
+  return <div>{projects.map(getShowcaseCard)}</div>;
 };
 
 export default ShowcaseCards;
