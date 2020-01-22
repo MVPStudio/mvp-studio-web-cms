@@ -13,7 +13,5 @@ import Img from 'gatsby-image';
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const Image = () => (
-  <div/>
-);
+const Image = () => <div />;
 export default Image;

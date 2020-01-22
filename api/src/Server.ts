@@ -16,7 +16,7 @@ app.get('/api', (req: Request, res: Response) => {
 });
 
 app.get('/api/project/:projectID', (req: Request, res: Response) => {
-    res.send('Return project info');
+    service.getProject(req.params.projectID).then((data) => res.json(data));
 });
 
 app.post('/api/project', (req: Request, res: Response) => {
