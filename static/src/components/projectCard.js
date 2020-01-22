@@ -46,9 +46,7 @@ const ProjectDetails = (props) => {
     fetchData();
   }, [])
   return (
-      <div>
-        {getProjectCard(project)}
-      </div>
+      getProjectCard(project)
   )
 };
 
