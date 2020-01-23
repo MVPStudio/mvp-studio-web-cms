@@ -13,8 +13,8 @@ export const AnimationWrapper = styled.div`
   margin: 1rem auto;
   ${gearAnimation};
   text-align: center;
-  display: grid;
-  grid-template-rows: auto auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   svg {
