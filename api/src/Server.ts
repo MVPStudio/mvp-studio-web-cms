@@ -36,7 +36,7 @@ app.get('/api/projects', (req: Request, res: Response) => {
 });
 
 app.post('/api/volunteer', (req: Request, res: Response) => {
-    res.json(req);
+    res.send(200);
 });
 
 // Export express instance
