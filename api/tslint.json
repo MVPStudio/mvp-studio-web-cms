@@ -5,6 +5,7 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "quotemark": [true, "single"],
+    "interface-name": false,
     "variable-name": {
       "options": [
         "ban-keywords",
