@@ -1,5 +1,15 @@
 import ProjectDao from './ProjectDao';
 
+// Type interface for Projects and Interfaces
+interface Volunteer {
+    name: string;
+    email: string;
+    github: string;
+    roleCategory?: string[];
+    experienceCategory?: string[];
+    whyText?: string;
+}
+
 export default class ProjectService {
     constructor(private dao: ProjectDao) {}
     public async getAllProjects() {
@@ -8,7 +18,7 @@ export default class ProjectService {
     public async getProject(id: string) {
       let result = {};
       // Check to make sure id is an integer
-      let re = /^\d{1,5}$/;
+      const re = /^\d{1,5}$/;
       if (re.test(id)) {
         const data = await this.dao.getProject(id);
         if (data.length !== 0) {
@@ -16,5 +26,13 @@ export default class ProjectService {
         }
       }
       return result;
+    }
+    public async sendVolunteer(volunteer: Volunteer) {
+      const data = {
+        statusCode: 200,
+        message: 'Thank you for your interest!',
+      };
+      // email will be sent in here
+      return data;
     }
   }
