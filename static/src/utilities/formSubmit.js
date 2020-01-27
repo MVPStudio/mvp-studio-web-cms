@@ -6,6 +6,14 @@ export const formSubmit = async (
 ) => {
   let response;
   if (values.formName === 'Volunteer_Form') {
+    const data = {
+      name: values.Name,
+      email: values.Email,
+      github: values.Github,
+      roleCategory: values.Role_Category,
+      experienceCategory: values.Experience_Category,
+      whyText: values.Why_Text,
+    }
     response = await (await fetch(
       '/api/volunteer',
       {
@@ -13,17 +21,14 @@ export const formSubmit = async (
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(data),
       },
-    ));
-    console.log(response)
+    )).json();
   }
-  // if (response.statusCode === 200) {
-  //   actions.resetForm();
-  // }
-  actions.resetForm();
+  if (response.statusCode === 200) {
+    actions.resetForm();
+  }
   setFormState(true);
-  // setSubmitResponse(response.message);
-  setSubmitResponse("Thanks")
+  setSubmitResponse(response.message);
   actions.setSubmitting(false);
 };
