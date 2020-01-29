@@ -5,7 +5,7 @@ import useShowcase from '../hooks/useShowcase';
 import VolunteerForm from './VolunteerForm';
 import { formSubmit } from '../utilities';
 
-const VolunteerFormContainer = ({ setFormState, setSubmitResponse }) => {
+const VolunteerFormContainer = ({ projectID, setFormState, setSubmitResponse }) => {
   const roleOptions = [
     { value: 'Front end', label: 'Developer: Front End' },
     { value: 'Back end', label: 'Developer: Back End' },
@@ -40,7 +40,7 @@ const VolunteerFormContainer = ({ setFormState, setSubmitResponse }) => {
       initialValues={initialValues}
       validationSchema // currently validated with HTML
       onSubmit={async (values, actions) => {
-        formSubmit(values, actions, setFormState, setSubmitResponse);
+        formSubmit({...values, projectID}, actions, setFormState, setSubmitResponse);
       }}
       render={props => (
         <VolunteerForm

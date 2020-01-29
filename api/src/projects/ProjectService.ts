@@ -2,6 +2,7 @@ import ProjectDao from './ProjectDao';
 
 // Type interface for Projects and Interfaces
 interface Volunteer {
+    id: string;
     name: string;
     email: string;
     github: string;

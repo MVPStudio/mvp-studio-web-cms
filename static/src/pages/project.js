@@ -8,10 +8,11 @@ import VolunteerFormContainer from '../forms/VolunteerFormContainer';
 import { AnimationWrapper, HomeCard } from '../components/GearButtons';
 import GearHammer from '../images/gearHammer.svg';
 
-const renderForm = () => (
+const renderForm = (projectID) => (
   <FormSubmitAnimation>
     {({ setFormState, setSubmitResponse }) => (
       <VolunteerFormContainer
+        projectID = {projectID}
         setFormState={setFormState}
         setSubmitResponse={setSubmitResponse}
       />
@@ -60,7 +61,7 @@ const Project = (props) => {
           }}
         />
       </>}
-      {showForm && renderForm()}
+      {showForm && renderForm(project.id)}
     </Layout>
   );
 };
