@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
 import Layout from '../components/layout';
 import { Line } from '../utilities';
@@ -28,19 +28,38 @@ const InvolvedGear = ({ onClick }) => (
   </HomeCard>
 );
 
-const Project = () => {
+const regex = (props) => {
+  const re = /^project\/?(\d{1,5}$)/;
+  const id = re.exec(props["*"]);
+  return id && id[1];
+}
+
+const Project = (props) => {
   const [showForm, setShowForm] = useState(false);
+  const [project, setProject] = useState({});
+  const projectID = regex(props);
+  useEffect(() => {
+    async function fetchData() {
+      if (projectID) {
+        const response = await fetch(`/api/project/${projectID}`);
+        setProject(await response.json());
+      }
+    }
+    fetchData();
+  }, []);
   return (
     <Layout>
       <Router>
-        <ProjectDetails path="/project/:projectID" />
+        <ProjectDetails path="/project/:projectID" project={project}/>
       </Router>
-      <Line />
-      <InvolvedGear
-        onClick={() => {
-          setShowForm(!showForm);
-        }}
-      />
+      {project.project_name && <>
+        <Line />
+        <InvolvedGear
+          onClick={() => {
+            setShowForm(!showForm);
+          }}
+        />
+      </>}
       {showForm && renderForm()}
     </Layout>
   );
