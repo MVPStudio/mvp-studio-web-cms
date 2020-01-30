@@ -7,6 +7,7 @@ const _MAX_DESCRIPTION_LENGTH: number = 512;
 export async function up(knex: Knex): Promise<any> {
     await knex.schema.createTable('projects', (table) => {
         table.increments();
+        table.timestamps(true, true); /* Adds created_at and updated_at columns to db, auto updates*/
         table.string('project_name', _MAX_NAME_LENGTH).notNullable();
         table.string('org_url', _MAX_URL_LENGTH);
         table.string('po_name', _MAX_NAME_LENGTH).notNullable();
