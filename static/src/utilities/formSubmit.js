@@ -26,6 +26,15 @@ export const formSubmit = async (
       },
     )).json();
   } else if (values.formName === 'Project_Onboarding_Form') {
+    const data = {
+      project_name: values.projectName,
+      po_name: values.poName,
+      po_email: values.poEmail,
+      description: values.description,
+      description_link: values.descriptionLink,
+      org_url: values.orgLink,
+      logo_link: values.logoLink,
+    }
     response = await (await fetch(
       '/api/project',
       {
@@ -33,7 +42,7 @@ export const formSubmit = async (
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(data),
       },
     )).json(); 
   }

@@ -20,12 +20,8 @@ app.get('/api/project/:projectID', (req: Request, res: Response) => {
 });
 
 app.post('/api/project', (req: Request, res: Response) => {
-    const data = {
-        statusCode: 200,
-        message: 'Thank you for your interest!',
-      };
-    console.log(req.body);
-    res.json(data);
+    req.body.status = 0; // projects are auto approved
+    service.addProject(req.body).then((data) => res.json(data));
 });
 
 app.put('/api/project/:projectID', (req: Request, res: Response) => {
