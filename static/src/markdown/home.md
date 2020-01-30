@@ -16,13 +16,6 @@ Are you an emerging informational technology professional looking to strengthen 
 
 </involved-gear>
 
-<sponsor-gear>
-
-Are you a sponsor seeking to invest in our local community of civic groups, developers and interns?  
-[**_Submit your sponsorship_**](/forms/sponsorFormPage)
-
-</sponsor-gear>
-
 > **-The mission vision and objectives of MVP Studio-**
 >
 > - Help civic groups learn how to own a software project
