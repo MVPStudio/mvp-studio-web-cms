@@ -14,6 +14,7 @@ export async function up(knex: Knex): Promise<any> {
         table.string('po_email', _MAX_NAME_LENGTH).notNullable();
         table.string('description', _MAX_DESCRIPTION_LENGTH).notNullable();
         table.string('description_link', _MAX_URL_LENGTH);
+        table.string('logo_link', _MAX_URL_LENGTH);
         table.integer('status').notNullable();
     });
 }
