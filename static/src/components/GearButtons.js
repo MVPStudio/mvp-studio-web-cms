@@ -65,7 +65,7 @@ ProjectGear.propTypes = {
 export const InvolvedGear = ({ children }) => (
   <HomeCard>
     {children}
-    <GearLink to="/forms/getInvolvedFormPage" title="Get Involved">
+    <GearLink to="/showcase" title="Get Involved">
       <GearWrench />
     </GearLink>
   </HomeCard>

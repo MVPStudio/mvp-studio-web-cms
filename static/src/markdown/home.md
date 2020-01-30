@@ -12,7 +12,7 @@ Are you a Civic Group with a vision? [**_Submit your project proposal_**](/forms
 
 <involved-gear>
 
-Are you an emerging informational technology professional looking to strengthen your portfolio, an industry professional interested in mentoring or a student seeking an internship? [**_Submit your application_**](/forms/getInvolvedFormPage)
+Are you an emerging informational technology professional looking to strengthen your portfolio, an industry professional interested in mentoring or a student seeking an internship? [**_Submit your application_**](/showcase)
 
 </involved-gear>
 
