@@ -20,7 +20,12 @@ app.get('/api/project/:projectID', (req: Request, res: Response) => {
 });
 
 app.post('/api/project', (req: Request, res: Response) => {
-    res.send('Add a new project to the database');
+    const data = {
+        statusCode: 200,
+        message: 'Thank you for your interest!',
+      };
+    console.log(req.body);
+    res.json(data);
 });
 
 app.put('/api/project/:projectID', (req: Request, res: Response) => {

@@ -25,6 +25,17 @@ export const formSubmit = async (
         body: JSON.stringify(data),
       },
     )).json();
+  } else if (values.formName === 'Project_Onboarding_Form') {
+    response = await (await fetch(
+      '/api/project',
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      },
+    )).json(); 
   }
   if (response.statusCode === 200) {
     actions.resetForm();
