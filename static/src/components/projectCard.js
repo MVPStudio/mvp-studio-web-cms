@@ -17,6 +17,16 @@ const ProjectCard = styled.div`
   ul {
     margin: 0;
   }
+  .container {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    align-items: center;
+  }
+  .grid-img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
 `;
 
 const getProjectCard = ({
@@ -25,6 +35,7 @@ const getProjectCard = ({
   po_name,
   description,
   description_link,
+  logo_link,
 }) => {
   if (project_name) {
     // Project exists
@@ -32,16 +43,22 @@ const getProjectCard = ({
       <ProjectCard key={project_name}>
         <h2>{project_name}</h2>
         <Line />
-        <ul>
-          <li>
-            Description: {description}{' '}
-            <a href={description_link}>
-              Click here for a more detailed description.
-            </a>
-          </li>
-          <li>Team Members: {po_name}</li>
-          <li>Link: {org_url}</li>
-        </ul>
+        <div class="container">
+          {/* Only display logo's if they exist */}
+          {logo_link && <div><img src={logo_link} alt="Project Logo" class="grid-img" /></div>}
+          <div>
+            <ul>
+              <li>
+                Description: {description}{' '}
+                <a href={description_link}>
+                  Click here for a more detailed description.
+                </a>
+              </li>
+              <li>Team Members: {po_name}</li>
+              <li>Link: {org_url}</li>
+            </ul>
+          </div>
+        </div>
       </ProjectCard>
     );
   } else {
