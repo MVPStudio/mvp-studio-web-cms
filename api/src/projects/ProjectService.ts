@@ -1,4 +1,6 @@
 import ProjectDao from './ProjectDao';
+import { pbkdf2, randomBytes } from 'crypto';
+import { promisify } from 'util';
 
 // Type interface for Projects and Interfaces
 export interface Project {
@@ -26,6 +28,15 @@ interface Volunteer {
     experienceCategory?: string[];
     whyText?: string;
 }
+interface MagicLinkObject {
+  cipher: string;
+  iterations: number;
+  length: number;
+  salt: string | Buffer;
+  hash: string | Buffer;
+}
+
+const pbkdf2Promisified = promisify(pbkdf2);
 
 export default class ProjectService {
     constructor(private dao: ProjectDao) {}
@@ -49,7 +60,13 @@ export default class ProjectService {
         statusCode: 200,
         message: 'Thank you for your interest!',
       };
-      await this.dao.addProject(project); // insert project
+      // Create magic links
+      const mvpKey = await randomBytes(16).toString('hex');
+      const projectKey = await randomBytes(16).toString('hex');
+      console.log(this.createMagicLinkForDatabase(mvpKey));
+      console.log(this.createMagicLinkForDatabase(projectKey));
+      //await this.dao.addProject(project); // insert project
+      // Send magic links to mvp and project owner
       return data;
     }
     public async sendVolunteer(volunteer: Volunteer) {
@@ -59,5 +76,22 @@ export default class ProjectService {
       };
       // email will be sent in here
       return data;
+    }
+    private async createMagicLinkForDatabase(magicLink: string) {
+      const magicLinkObjectWithoutHash = {
+        cipher: 'sha512',
+        iterations: 300000,
+        length: 64,
+        salt: (await randomBytes(16)).toString('hex'),
+      };
+      const magicLinkObject: MagicLinkObject = {
+        ...magicLinkObjectWithoutHash,
+        hash: await this.createMagicLinkHash(magicLink, magicLinkObjectWithoutHash),
+      };
+      console.log(magicLinkObject);
+      return JSON.stringify(magicLinkObject);
+    }
+    private async createMagicLinkHash(magicLink: string, { salt, iterations, length, cipher }: Omit<MagicLinkObject, 'hash'>) {
+      return (await pbkdf2Promisified(magicLink, salt, iterations, length, cipher)).toString('hex');
     }
   }
