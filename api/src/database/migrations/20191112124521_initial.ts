@@ -15,6 +15,8 @@ export async function up(knex: Knex): Promise<any> {
         table.string('description', _MAX_DESCRIPTION_LENGTH).notNullable();
         table.string('description_link', _MAX_URL_LENGTH);
         table.string('logo_link', _MAX_URL_LENGTH);
+        table.string('mvp_link', _MAX_URL_LENGTH);
+        table.string('po_link', _MAX_URL_LENGTH);
         table.integer('status').notNullable();
     });
 }
