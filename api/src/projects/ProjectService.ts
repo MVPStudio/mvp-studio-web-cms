@@ -11,6 +11,8 @@ export interface Project {
   description_link: string;
   org_url: string;
   logo_link: string;
+  mvp_link: string;
+  po_link: string;
   status: number;
   /** Status codes:
    *  0 = approved
@@ -55,7 +57,7 @@ export default class ProjectService {
       }
       return result;
     }
-    public async addProject(project: Project) {
+    public async addProject(project: Omit<Project, 'mvp_link,po_link'>) {
       const data = {
         statusCode: 200,
         message: 'Thank you for your interest!',
@@ -63,8 +65,11 @@ export default class ProjectService {
       // Create magic links
       const mvpKey = await randomBytes(16).toString('hex');
       const projectKey = await randomBytes(16).toString('hex');
-      console.log(this.createMagicLinkForDatabase(mvpKey));
-      console.log(this.createMagicLinkForDatabase(projectKey));
+      // add these hashes to project type
+      const mvpHash = await this.createMagicLinkForDatabase(mvpKey);
+      const projectHash = await this.createMagicLinkForDatabase(projectKey);
+      console.log(await this.verifyMagicLink(mvpKey,mvpHash));
+      console.log(await this.verifyMagicLink(projectKey,projectHash));
       //await this.dao.addProject(project); // insert project
       // Send magic links to mvp and project owner
       return data;
@@ -88,10 +93,13 @@ export default class ProjectService {
         ...magicLinkObjectWithoutHash,
         hash: await this.createMagicLinkHash(magicLink, magicLinkObjectWithoutHash),
       };
-      console.log(magicLinkObject);
       return JSON.stringify(magicLinkObject);
     }
     private async createMagicLinkHash(magicLink: string, { salt, iterations, length, cipher }: Omit<MagicLinkObject, 'hash'>) {
       return (await pbkdf2Promisified(magicLink, salt, iterations, length, cipher)).toString('hex');
+    }
+    private async verifyMagicLink(magicLink: string, stringifiedMagicLinkObject: string) {
+      const magicLinkObject = JSON.parse(stringifiedMagicLinkObject) as MagicLinkObject;
+      return magicLinkObject.hash === (await this.createMagicLinkHash(magicLink, magicLinkObject));
     }
   }
