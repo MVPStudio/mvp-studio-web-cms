@@ -63,14 +63,15 @@ export default class ProjectService {
         message: 'Thank you for your interest!',
       };
       // Create magic links
-      const mvpKey = await randomBytes(16).toString('hex');
-      const projectKey = await randomBytes(16).toString('hex');
-      // add these hashes to project type
-      const mvpHash = await this.createMagicLinkForDatabase(mvpKey);
-      const projectHash = await this.createMagicLinkForDatabase(projectKey);
-      console.log(await this.verifyMagicLink(mvpKey,mvpHash));
-      console.log(await this.verifyMagicLink(projectKey,projectHash));
-      //await this.dao.addProject(project); // insert project
+      const mvpMagicLink = await randomBytes(16).toString('hex');
+      const projectMagicLink = await randomBytes(16).toString('hex');
+      // Insert project to db
+      await this.dao
+        .addProject({
+          ...project,
+          mvp_link: await this.createMagicLinkForDatabase(mvpMagicLink),
+          po_link: await this.createMagicLinkForDatabase(projectMagicLink),
+          });
       // Send magic links to mvp and project owner
       return data;
     }
