@@ -20,7 +20,8 @@ app.get('/api/project/:projectID', (req: Request, res: Response) => {
 });
 
 app.post('/api/project', (req: Request, res: Response) => {
-    res.send('Add a new project to the database');
+    req.body.status = 0; // projects are auto approved
+    service.addProject(req.body).then((data) => res.json(data));
 });
 
 app.put('/api/project/:projectID', (req: Request, res: Response) => {

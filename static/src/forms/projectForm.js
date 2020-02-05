@@ -34,54 +34,47 @@ export default class ProjectForm extends Component {
           Project Name:*
           <Field
             className={
-              touched.Name_of_project && errors.Name_of_project ? 'invalid' : ''
+              touched.projectName && errors.projectName ? 'invalid' : ''
             }
             type="text"
-            name="Name_of_project"
+            name="projectName"
             required
           />
         </label>
         <label>
-          Email:*
+          Project Owner Name:*
           <Field
-            className={touched.Email && errors.Email ? 'invalid' : ''}
-            type="email"
-            name="Email"
+            className={touched.poName && errors.poName ? 'invalid' : ''}
+            type="text"
+            name="poName"
             required
           />
         </label>
         <label>
-          Short Description:
-          <Field type="text" name="Short_description" />
+          Project Owner Email:*
+          <Field
+            className={touched.poEmail && errors.poEmail ? 'invalid' : ''}
+            type="email"
+            name="poEmail"
+            required
+          />
         </label>
         <label>
-          Stakeholder Organization:
-          <Field type="text" name="Stakeholder_organization" />
+          Short Description*:
+          <Field type="textarea" name="description" required />
         </label>
         <label>
-          Community Partners:
-          <Field component="textarea" name="Community_partners" />
-        </label>
-        <label>
-          Industry Partners:
-          <Field component="textarea" name="Industry_partners" />
-        </label>
-        <label>
-          Link to demo:
-          <Field type="text" name="Link" />
+          Link to Full Description:
           {/* type url requires "http"...  */}
+          <Field type="text" name="descriptionLink" />
         </label>
         <label>
-          Projected Budget:
-          <Field type="text" name="Projected_budget" />
+          Organization Link:
+          <Field type="text" name="orgLink" />
         </label>
         <label>
-          Existing Team:
-          <Field component="textarea" name="Existing_team" />
-        </label>
-        <label>
-          Existing Sponsors
-          <Field component="textarea" name="Existing_sponsors" />
+          Logo Link:
+          <Field type="text" name="logoLink" />
         </label>
         <MVPRecaptcha
           setFieldValue={setFieldValue}

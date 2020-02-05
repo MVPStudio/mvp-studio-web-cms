@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from '../utilities';
 import styled from 'styled-components';
+import classnames from 'classnames';
 
 const ProjectCard = styled.div`
   margin: 0.5rem auto;
@@ -17,6 +18,20 @@ const ProjectCard = styled.div`
   ul {
     margin: 0;
   }
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  .grid-img {
+    width: 33%;
+    height: 100%;
+    max-height: 150px;
+    object-fit: scale-down;
+  }
+  .nologo {
+    width: 70%;
+    margin: 0 auto;
+  }
 `;
 
 const getProjectCard = ({
@@ -25,6 +40,7 @@ const getProjectCard = ({
   po_name,
   description,
   description_link,
+  logo_link,
 }) => {
   if (project_name) {
     // Project exists
@@ -32,16 +48,22 @@ const getProjectCard = ({
       <ProjectCard key={project_name}>
         <h2>{project_name}</h2>
         <Line />
-        <ul>
-          <li>
-            Description: {description}{' '}
-            <a href={description_link}>
-              Click here for a more detailed description.
-            </a>
-          </li>
-          <li>Team Members: {po_name}</li>
-          <li>Link: {org_url}</li>
-        </ul>
+        <div className={classnames('container', {nologo: !logo_link})}>
+          {/* Only display logo's if they exist */}
+          {logo_link && <img src={logo_link} alt="Project Logo" class="grid-img" />}
+          <div>
+            <ul>
+              <li>
+                Description: {description}{' '}
+                <a href={description_link}>
+                  Click here for a more detailed description.
+                </a>
+              </li>
+              <li>Team Members: {po_name}</li>
+              <li>Link: {org_url}</li>
+            </ul>
+          </div>
+        </div>
       </ProjectCard>
     );
   } else {

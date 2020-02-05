@@ -6,17 +6,14 @@ import { formSubmit } from '../utilities';
 
 const ProjectContainer = ({ setFormState, setSubmitResponse }) => {
   const initialValues = {
-    formName: 'Project_Onboarding_Form', // Must be same as airtable base name
-    Name_of_project: '',
-    Email: '',
-    Short_description: '',
-    Stakeholder_organization: '',
-    Community_partners: '',
-    Industry_partners: '',
-    Link: '',
-    Projected_budget: '',
-    Existing_team: '',
-    Existing_sponsors: '',
+    formName: 'Project_Onboarding_Form',
+    projectName: '',
+    poName: '',
+    poEmail: '',
+    description: '',
+    descriptionLink: '',
+    orgLink: '',
+    logoLink: '',
   };
   return (
     <Formik
