@@ -7,7 +7,6 @@ import SEO from '../components/seo';
 import {
   ProjectGear,
   InvolvedGear,
-  SponsorGear,
 } from '../components/GearButtons';
 
 const IndexPage = ({ location }) => {
@@ -24,7 +23,6 @@ const IndexPage = ({ location }) => {
     components: {
       'project-gear': ProjectGear,
       'involved-gear': InvolvedGear,
-      'sponsor-gear': SponsorGear,
     },
   }).Compiler;
   return (
