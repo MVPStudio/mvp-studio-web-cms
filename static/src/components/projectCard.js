@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from '../utilities';
 import styled from 'styled-components';
+import classnames from 'classnames';
 
 const ProjectCard = styled.div`
   margin: 0.5rem auto;
@@ -18,14 +19,18 @@ const ProjectCard = styled.div`
     margin: 0;
   }
   .container {
-    display: grid;
-    grid-template-columns: 0.2fr 1fr;
+    display: flex;
     align-items: center;
   }
   .grid-img {
-    width: 100%;
+    width: 33%;
     height: 100%;
+    max-height: 150px;
     object-fit: scale-down;
+  }
+  .nologo {
+    width: 70%;
+    margin: 0 auto;
   }
 `;
 
@@ -43,9 +48,9 @@ const getProjectCard = ({
       <ProjectCard key={project_name}>
         <h2>{project_name}</h2>
         <Line />
-        <div class="container">
+        <div className={classnames('container', {nologo: !logo_link})}>
           {/* Only display logo's if they exist */}
-          {logo_link && <div><img src={logo_link} alt="Project Logo" class="grid-img" /></div>}
+          {logo_link && <img src={logo_link} alt="Project Logo" class="grid-img" />}
           <div>
             <ul>
               <li>
