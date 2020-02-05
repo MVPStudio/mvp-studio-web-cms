@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Line } from '../utilities';
 import styled from 'styled-components';
 
@@ -10,6 +10,9 @@ const ProjectCard = styled.div`
   }
   h2 {
     margin-bottom: 0.1rem;
+  }
+  h3 {
+    text-align: center;
   }
   ul {
     margin: 0;
@@ -43,19 +46,15 @@ const getProjectCard = ({
     );
   } else {
     // Project does not exist
-    return <h3>Sorry, this project does not exist.</h3>;
+    return (
+      <ProjectCard>
+        <h3>Sorry, this project does not exist.</h3>
+      </ProjectCard>
+    );
   }
 };
 
-const ProjectDetails = props => {
-  const [project, setProject] = useState({});
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`/api/project/${props.projectID}`);
-      setProject(await response.json());
-    }
-    fetchData();
-  }, []);
+const ProjectDetails = ({project}) => {
   return getProjectCard(project);
 };
 
