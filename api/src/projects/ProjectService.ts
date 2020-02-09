@@ -4,16 +4,16 @@ import { promisify } from 'util';
 
 // Type interface for Projects and Interfaces
 export interface Project {
-  project_name: string;
-  po_name: string;
-  po_email: string;
-  description: string;
-  description_link: string;
-  org_url: string;
-  logo_link: string;
-  mvp_link: string;
-  po_link: string;
-  status: number;
+  project_name: string; // The name of the project
+  po_name: string; // The project owner's name
+  po_email: string; // The project owner's email
+  description: string; // Short project description
+  description_link: string; // Link to a longer description
+  org_url: string; // Link to the project org's site
+  logo_link: string; // Link to project logo
+  mvp_link: string; // MVP magic link
+  po_link: string; // Project owner's magic link
+  status: number; // The state of the project
   /** Status codes:
    *  0 = approved
    *  1 = started
@@ -34,8 +34,8 @@ interface MagicLinkObject {
   cipher: string;
   iterations: number;
   length: number;
-  salt: string | Buffer;
-  hash: string | Buffer;
+  salt: string;
+  hash: string;
 }
 
 const pbkdf2Promisified = promisify(pbkdf2);
