@@ -46,4 +46,5 @@ export const config = {
         },
     },
    emailKey: getEnvString('SENDGRID_API_KEY'),
+   emailSender: getEnvString('SENDER_EMAIL'),
 };
