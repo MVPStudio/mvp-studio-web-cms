@@ -40,9 +40,6 @@ interface MagicLinkObject {
 }
 
 const pbkdf2Promisified = promisify(pbkdf2);
-// Email API setup
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(config.emailKey);
 
 export default class ProjectService {
     constructor(private dao: ProjectDao) {}
@@ -70,22 +67,15 @@ export default class ProjectService {
       const mvpMagicLink = await randomBytes(16).toString('hex');
       const projectMagicLink = await randomBytes(16).toString('hex');
       // Insert project to db
-      const msg = {
-        to: 'test@example.com',
-          from: 'test@example.com',
-            subject: 'Sending with Twilio SendGrid is Fun',
-              text: 'and easy to do anywhere, even with Node.js',
-                html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-                };
-      sgMail.send(msg);
-      /*await this.dao
+      const id = await this.dao
         .addProject({
           ...project,
           mvp_link: await this.createMagicLinkForDatabase(mvpMagicLink),
           po_link: await this.createMagicLinkForDatabase(projectMagicLink),
           });
-          */
       // Send magic links to mvp and project owner
+      //sendProjectOwnerEmail(id, projectMagicLink);
+      //sendMVPEmail(id, mvpMagicLink);
       return data;
     }
     public async sendVolunteer(volunteer: Volunteer) {
