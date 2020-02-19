@@ -2,7 +2,6 @@ import { config } from '../config/config';
 import sgMail from '@sendgrid/mail';
 
 interface Mail {
-  sourceAddress: string;
   destAddress: string;
   subject: string;
   msgBody: string;
@@ -17,11 +16,10 @@ export default class SendGridEmailService {
   public sendMail(email: Mail) {
       const msg = {
         to: email.destAddress,
-        from: email.sourceAddress,
+        from: config.emailSender,
         subject: email.subject,
         text: email.msgBody,
       };
       this.sendgrid.send(msg);
   }
 }
-

@@ -2,6 +2,7 @@ import ProjectDao from './ProjectDao';
 import { config } from '../config/config';
 import { pbkdf2, randomBytes } from 'crypto';
 import { promisify } from 'util';
+import SendGridEmailService from '../services/SendGridEmailService';
 
 // Type interface for Projects and Interfaces
 export interface Project {
@@ -42,7 +43,7 @@ interface MagicLinkObject {
 const pbkdf2Promisified = promisify(pbkdf2);
 
 export default class ProjectService {
-    constructor(private dao: ProjectDao) {}
+    constructor(private dao: ProjectDao, private mailer: SendGridEmailService) {}
     public async getAllProjects() {
       return this.dao.getAllProjects();
     }
@@ -67,15 +68,15 @@ export default class ProjectService {
       const mvpMagicLink = await randomBytes(16).toString('hex');
       const projectMagicLink = await randomBytes(16).toString('hex');
       // Insert project to db
-      const id = await this.dao
+      const dbReturn = await this.dao
         .addProject({
           ...project,
           mvp_link: await this.createMagicLinkForDatabase(mvpMagicLink),
           po_link: await this.createMagicLinkForDatabase(projectMagicLink),
           });
+      const id = dbReturn.pop();
       // Send magic links to mvp and project owner
-      //sendProjectOwnerEmail(id, projectMagicLink);
-      //sendMVPEmail(id, mvpMagicLink);
+      this.sendProjectSubmissionEmail(id, projectMagicLink, mvpMagicLink, project);
       return data;
     }
     public async sendVolunteer(volunteer: Volunteer) {
@@ -105,5 +106,25 @@ export default class ProjectService {
     private async verifyMagicLink(magicLink: string, stringifiedMagicLinkObject: string) {
       const magicLinkObject = JSON.parse(stringifiedMagicLinkObject) as MagicLinkObject;
       return magicLinkObject.hash === (await this.createMagicLinkHash(magicLink, magicLinkObject));
+    }
+    private sendProjectSubmissionEmail(id: number|undefined,
+                                       projectMagicLink: string,
+                                       mvpMagicLink: string,
+                                       { project_name, po_name, po_email }: Project,
+    ) {
+      if (id) {
+        const ownerEmail = {
+          destAddress: po_email,
+          subject: `${project_name} has been submitted`,
+          msgBody: `Thank you for submitting ${project_name}! Link: /project/${id}/edit/${projectMagicLink}`,
+        };
+        const mvpEmail = {
+          destAddress: config.emailSender,
+          subject: `New Project: ${project_name}`,
+          msgBody: `${project_name} submitted by ${po_name}. Link: /project/${id}/admin/${mvpMagicLink}`,
+        };
+        this.mailer.sendMail(ownerEmail);
+        this.mailer.sendMail(mvpEmail);
+      }
     }
   }
