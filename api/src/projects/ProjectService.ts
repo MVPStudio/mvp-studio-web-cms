@@ -1,15 +1,19 @@
 import ProjectDao from './ProjectDao';
+import { pbkdf2, randomBytes } from 'crypto';
+import { promisify } from 'util';
 
 // Type interface for Projects and Interfaces
 export interface Project {
-  project_name: string;
-  po_name: string;
-  po_email: string;
-  description: string;
-  description_link: string;
-  org_url: string;
-  logo_link: string;
-  status: number;
+  project_name: string; // The name of the project
+  po_name: string; // The project owner's name
+  po_email: string; // The project owner's email
+  description: string; // Short project description
+  description_link: string; // Link to a longer description
+  org_url: string; // Link to the project org's site
+  logo_link: string; // Link to project logo
+  mvp_link: string; // MVP magic link
+  po_link: string; // Project owner's magic link
+  status: number; // The state of the project
   /** Status codes:
    *  0 = approved
    *  1 = started
@@ -26,6 +30,15 @@ interface Volunteer {
     experienceCategory?: string[];
     whyText?: string;
 }
+interface MagicLinkObject {
+  cipher: string;
+  iterations: number;
+  length: number;
+  salt: string;
+  hash: string;
+}
+
+const pbkdf2Promisified = promisify(pbkdf2);
 
 export default class ProjectService {
     constructor(private dao: ProjectDao) {}
@@ -44,12 +57,22 @@ export default class ProjectService {
       }
       return result;
     }
-    public async addProject(project: Project) {
+    public async addProject(project: Omit<Project, 'mvp_link,po_link'>) {
       const data = {
         statusCode: 200,
         message: 'Thank you for your interest!',
       };
-      await this.dao.addProject(project); // insert project
+      // Create magic links
+      const mvpMagicLink = await randomBytes(16).toString('hex');
+      const projectMagicLink = await randomBytes(16).toString('hex');
+      // Insert project to db
+      await this.dao
+        .addProject({
+          ...project,
+          mvp_link: await this.createMagicLinkForDatabase(mvpMagicLink),
+          po_link: await this.createMagicLinkForDatabase(projectMagicLink),
+          });
+      // Send magic links to mvp and project owner
       return data;
     }
     public async sendVolunteer(volunteer: Volunteer) {
@@ -59,5 +82,25 @@ export default class ProjectService {
       };
       // email will be sent in here
       return data;
+    }
+    private async createMagicLinkForDatabase(magicLink: string) {
+      const magicLinkObjectWithoutHash = {
+        cipher: 'sha512',
+        iterations: 300000,
+        length: 64,
+        salt: (await randomBytes(16)).toString('hex'),
+      };
+      const magicLinkObject: MagicLinkObject = {
+        ...magicLinkObjectWithoutHash,
+        hash: await this.createMagicLinkHash(magicLink, magicLinkObjectWithoutHash),
+      };
+      return JSON.stringify(magicLinkObject);
+    }
+    private async createMagicLinkHash(magicLink: string, { salt, iterations, length, cipher }: Omit<MagicLinkObject, 'hash'>) {
+      return (await pbkdf2Promisified(magicLink, salt, iterations, length, cipher)).toString('hex');
+    }
+    private async verifyMagicLink(magicLink: string, stringifiedMagicLinkObject: string) {
+      const magicLinkObject = JSON.parse(stringifiedMagicLinkObject) as MagicLinkObject;
+      return magicLinkObject.hash === (await this.createMagicLinkHash(magicLink, magicLinkObject));
     }
   }
