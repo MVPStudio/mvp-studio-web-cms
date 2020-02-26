@@ -45,4 +45,6 @@ export const config = {
             directory: join(__dirname, '..', 'database', 'seeds'),
         },
     },
+   emailKey: getEnvString('SENDGRID_API_KEY'),
+   emailSender: getEnvString('SENDER_EMAIL'),
 };

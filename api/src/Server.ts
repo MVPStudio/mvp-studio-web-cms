@@ -3,10 +3,11 @@ import { Request, Response } from 'express';
 import { getDbClientInstance } from './database/dbClient';
 import ProjectService from './projects/ProjectService';
 import ProjectDao from './projects/ProjectDao';
+import SendGridEmailService from './services/SendGridEmailService';
 
 // Init express
 const app = express();
-const service = new ProjectService(new ProjectDao(getDbClientInstance()));
+const service = new ProjectService(new ProjectDao(getDbClientInstance()), new SendGridEmailService());
 // Add middleware/settings/routes to express.
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
