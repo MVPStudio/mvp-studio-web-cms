@@ -128,7 +128,7 @@ export default class ProjectService {
       }
     }
     private async sendVolunteerSubmissionEmail(volunteer: Volunteer) {
-      let project: Project = <Project> await this.getProject(volunteer.id);
+      const project: Project = await this.getProject(volunteer.id) as Project;
       const email = {
         destAddress: project.po_email, // The project owner's email
         subject: `${volunteer.name} has volunteered to help on ${project.project_name}`,
@@ -139,7 +139,7 @@ export default class ProjectService {
                   Role: ${volunteer.roleCategory}
                   Experience: ${volunteer.experienceCategory}
                   Why they are interested: ${volunteer.whyText}`,
-      }
+      };
       this.mailer.sendMail(email);
     }
   }
