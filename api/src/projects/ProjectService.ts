@@ -84,7 +84,7 @@ export default class ProjectService {
         statusCode: 200,
         message: 'Thank you for your interest!',
       };
-      // email will be sent in here
+      this.sendVolunteerSubmissionEmail(volunteer);
       return data;
     }
     private async createMagicLinkForDatabase(magicLink: string) {
@@ -126,5 +126,20 @@ export default class ProjectService {
         this.mailer.sendMail(ownerEmail);
         this.mailer.sendMail(mvpEmail);
       }
+    }
+    private async sendVolunteerSubmissionEmail(volunteer: Volunteer) {
+      const project: Project = await this.getProject(volunteer.id) as Project;
+      const email = {
+        destAddress: project.po_email, // The project owner's email
+        subject: `${volunteer.name} has volunteered to help on ${project.project_name}`,
+        msgBody: `Volunteer Info:
+                  Name: ${volunteer.name}
+                  Email: ${volunteer.email}
+                  Github Handle: ${volunteer.github}
+                  Role: ${volunteer.roleCategory}
+                  Experience: ${volunteer.experienceCategory}
+                  Why they are interested: ${volunteer.whyText}`,
+      };
+      this.mailer.sendMail(email);
     }
   }
