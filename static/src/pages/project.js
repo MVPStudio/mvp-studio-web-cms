@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Router } from '@reach/router';
+import { Router, Redirect} from '@reach/router';
 import Layout from '../components/layout';
 import { Line } from '../utilities';
 import ProjectDetails from '../components/projectCard';
@@ -30,9 +30,26 @@ const InvolvedGear = ({ onClick }) => (
 );
 
 const regex = (props) => {
-  const re = /^project\/?(\d{1,5}$)/;
-  const id = re.exec(props["*"]);
-  return id && id[1];
+  // https://www.postgresql.org/docs/9.3/datatype-numeric.html
+  const PG_SERIAL_MIN = 1;
+  const PG_SERIAL_MAX = 2147483647;
+  const reProj = /^project\/(\d{1,10})\/?/;
+  const path = reProj.exec(props["*"]);
+  // Check if we have a proper path with an id
+  console.log(path)
+  if(path && path[1]) {
+    const projectID = parseInt(path[1], 10);
+    console.log(projectID);
+    if(projectID > 0 && projectID <= PG_SERIAL_MAX) {
+      return -1
+    }
+  } else {
+    return -1;
+  }
+  console.log(typeof path[1]);
+  // Return true if id is not undefined AND
+  // we actually have a project id afterwards
+  return 1;
 }
 
 const Project = (props) => {
@@ -41,9 +58,13 @@ const Project = (props) => {
   const projectID = regex(props);
   useEffect(() => {
     async function fetchData() {
-      if (projectID) {
+      console.log(projectID)
+      if (projectID != -1) {
         const response = await fetch(`/api/project/${projectID}`);
         setProject(await response.json());
+      } else {
+        console.log("here");
+        return <Redirect to='/404' />
       }
     }
     fetchData();
@@ -52,6 +73,7 @@ const Project = (props) => {
     <Layout>
       <Router>
         <ProjectDetails path="/project/:projectID" project={project}/>
+        {/* <ProjectOwnerAdmin path="/project/:projectID/edit/:key" project={project}/> */}
       </Router>
       {project.project_name && <>
         <Line />
