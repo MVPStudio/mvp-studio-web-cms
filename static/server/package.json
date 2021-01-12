@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "airtable": "^0.6.0",
+    "airtable": "^0.7.2",
     "axios": "^0.21.1",
     "body-parser": "^1.18.3",
     "dotenv": "^8.0.0",
