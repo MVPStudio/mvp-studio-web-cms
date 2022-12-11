@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^6.5.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "knex": "^0.20.1",
     "pg": "^7.12.1",
     "tslib": "^1.10.0"
