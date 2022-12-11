@@ -14,7 +14,7 @@
     "axios": "^0.21.1",
     "body-parser": "^1.18.3",
     "dotenv": "^8.0.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "gatsby-plugin-express": "^1.1.6",
     "helmet": "^3.15.1",
     "nodemon": "^1.18.10"
